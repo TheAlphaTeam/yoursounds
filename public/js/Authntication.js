@@ -5,9 +5,9 @@
 
 
 const checkLogin = () => {
-    if (!window.localStorage.user)  
-        window.location.href = "/";
-}
+  if (!window.localStorage.user){
+    window.location.href = '/';}
+};
 
 
 
