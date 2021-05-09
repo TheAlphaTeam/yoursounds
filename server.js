@@ -1,4 +1,3 @@
-'use strict';
 
 require('dotenv').config();
 const express = require('express');
@@ -11,12 +10,14 @@ const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 const methodOverride = require('method-override');
 const { profile } = require('console');
+const fetch = require('node-fetch');
 
 server.use(cors());
 server.set('view engine', 'ejs');
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static('./public'));
 server.use(methodOverride('_method'));
+
 
 server.get('/', homePage);
 server.post('/singUp', singUp);
@@ -84,6 +85,40 @@ function Login(req, res, next) {
 function TEST(req, res, next) {
   res.render('pages/Test');
 }
+//////////////////////////////////search page//////////////////////////////////////////////////////////////////
+
+// API Routes
+server.get('/search',(req,res)=>{
+  res.render('pages/search');
+});
+server.post('/search',showFormHandler);
+/////////////////////////////////////search page///////////////////////////////////////////////////////////////
+//funcrion for take data from Api and send it to show page
+function showFormHandler(req,res) {
+  let term =req.body.songs;
+  if (req.body.name === 'artist') {
+    let url = `https://api.deezer.com/search?q=${term}`;
+    superagent.get(url).
+      then((apiData=>{
+        let artistData= apiData.body.data;
+        let dataConstructors= artistData.map((item=>{
+          return new Artist (item);
+        }));
+        res.render('pages/showartist' , {songs:dataConstructors});
+      }));//Artist page
+  }else if(req.body.name === 'song'){
+    fetch(`https://itunes.apple.com/search?attribute=songTerm&entity=song&term=${term}`)
+      .then(res => res.json())
+      .then((apiData=>{
+        let songData= apiData.results;
+        let dataConstructors= songData.map((item=>{
+          return new Songs (item);
+        }));
+        res.render('pages/showsong' , {songs:dataConstructors});
+      }));//song page
+  }
+}
+
 
 // function updateBookHandler(req,res){
 //   let {authors,title,isbn,image,description} = req.body;
@@ -95,6 +130,23 @@ function TEST(req, res, next) {
 //       res.redirect(`/bookDetail/${req.params.bookID}`);
 //     });
 // }
+
+//Constructors for Artist Data
+function Artist (artistData){
+  this.preview=artistData.preview;
+  this.name=artistData.artist.name;
+  this.image=artistData.album.cover_medium;
+  this.title=artistData.title;
+}
+
+//Constructors for Songs Data
+function Songs (songData){
+  this.preview=songData.previewUrl;
+  this.name=songData.artistName;
+  this.image=songData.artworkUrl100;
+  this.title=songData.trackName;
+}
+/////////////////////////////////////////////////end search page////////////////////////////////////////////////////
 
 
 client.connect()
