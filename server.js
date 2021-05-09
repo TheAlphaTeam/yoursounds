@@ -1,4 +1,3 @@
-'use strict';
 
 require('dotenv').config();
 const express = require('express');
@@ -11,6 +10,7 @@ const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 // const client = new pg.Client(process.env.DATABASE_URL);
 const methodOverride = require('method-override');
+const fetch = require('node-fetch');
 server.use(cors());
 server.set('view engine', 'ejs');
 server.use(express.urlencoded({ extended: true }));
@@ -81,7 +81,47 @@ function Login(req, res, next) {
 function TEST(req, res, next) {
   res.render('pages/Test');
 }
+//////////////////////////////////search page//////////////////////////////////////////////////////////////////
 
+// API Routes
+server.get('/search',(req,res)=>{
+  res.render('pages/search');
+});
+server.post('/search',showFormHandler);
+/////////////////////////////////////search page///////////////////////////////////////////////////////////////
+//funcrion for take data from Api and send it to show page
+function showFormHandler(req,res) {
+  let term =req.body.songs;
+  if (req.body.name === 'artist') {
+    let url = `https://api.deezer.com/search?q=${term}`;
+    superagent.get(url).
+      then((apiData=>{
+        let artistData= apiData.body.data;
+        let dataConstructors= artistData.map((item=>{
+          return new Artist (item);
+        }));
+        res.render('pages/showartist' , {songs:dataConstructors});
+      }));//Artist page
+  }else if(req.body.name === 'song'){
+    fetch(`https://itunes.apple.com/search?attribute=songTerm&entity=song&term=${term}`)
+      .then(res => res.json())
+      .then((apiData=>{
+        let songData= apiData.results;
+        let dataConstructors= songData.map((item=>{
+          return new Songs (item);
+        }));
+        res.render('pages/showsong' , {songs:dataConstructors});
+      }));//song page
+  }
+}
+
+//Constructors for Artist Data
+function Artist (artistData){
+  this.preview=artistData.preview;
+  this.name=artistData.artist.name;
+  this.image=artistData.album.cover_medium;
+  this.title=artistData.title;
+}
 
 
 
@@ -121,12 +161,21 @@ function Events(Data){
   this.offer=Data.offers[0].status;
   this.time=Data.datetime;
   this.description=Data.description;
-  this.type=Data.venue.type;
   this.type = (Data.venue.type)?`will be ${Data.venue.type }event`: ` location : ${Data.venue.city} - ${Data.venue.country}`;
 
 }
 
 
+
+
+//Constructors for Songs Data
+function Songs (songData){
+  this.preview=songData.previewUrl;
+  this.name=songData.artistName;
+  this.image=songData.artworkUrl100;
+  this.title=songData.trackName;
+}
+/////////////////////////////////////////////////end search page////////////////////////////////////////////////////
 
 
 client.connect()
