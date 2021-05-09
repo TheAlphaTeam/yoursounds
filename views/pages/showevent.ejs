@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Show</title>
+</head>
+<body>
+    <header ><h1>Upcoming Event </h1> </header>
+<main>
+    <img src="<%= EventArray[0].img%>">
+    <h2><%= EventArray[0].name %></h2>
+    <div class=data>
+    <%  EventArray.forEach(event=>{ %>
+        <div >
+            <h3><%=event.title %></h3>
+            <h3><%=event.time %></h3>
+            <p><%=event.location%></p>
+            <p> status:<%=event.offer%></p>
+            <p><%=event.description%></p>
+            <p><%=event.type%></p>
+          
+
+        </div>
+    <% }) %>
+</div>
+</main>
+<footer></footer>
+</body>
+</html>

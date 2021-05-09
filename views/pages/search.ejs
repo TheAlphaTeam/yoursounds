@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/search" method="POST">
+    <form action="/search/<%=user%>" method="POST">
         <label for="">search:</label>
         <input type="text"  name="songs" required><br>
-<label for="">name</label>
-        <input type="radio"  name="name" value="artist" placeholder="title" checked ><br>
-<label for="">song</label>
-        <input type="radio"  name="name" value="song" placeholder="author" ><br>
+        <label for="">Artist Name</label>
+        <input type="radio"  name="name" value="artist"  checked ><br>
+        <label for="">Song Name</label>
+        <input type="radio"  name="name" value="song"  ><br>
         <button>Search for songs</button><br>
     </form>
 </body>

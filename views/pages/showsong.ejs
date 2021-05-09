@@ -7,12 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+    <section>
     <% songs.forEach(song=>{%>
-        <section>
+        <div>
 <audio controls>  <source src="<%=song.preview%>"type="audio/mpeg"></audio><br>
         <img src="<%=song.image%>"><br>
         <h3><%=song.title%></h3><br>
         <h2><%= song.name%></h2><br>
+        
+        <form action="/addsong/<%=user%>" method="post">
+            <input type="hidden" name="title" value="<%=song.preview%>">
+            <input type="hidden" name="preview" value="<%=song.image%>">
+            <input type="hidden" name="image"value="<%=song.title%>">
+            <input type="hidden" name="name"value="<%= song.name%>">
+        <button type="submit"><h2 style="font-size: xx-large; height: 10px; line-height: 10px;">&#9825;</h2></button>
+        </form></div>
     <%})%>
        </section>
 </body>

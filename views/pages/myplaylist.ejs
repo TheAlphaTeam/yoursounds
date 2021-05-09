@@ -8,29 +8,41 @@
 </head>
 <body>
    <header>
-
+    <form action="/login" method="POST" id="logout">  
+        <input type="submit" value="LogOut">
+        </form>
+        <form action="/search/<%= input.username %>" >  
+            <input type="submit" value="search">
+            </form>
    </header>
 
     <main>
     <div class="personalIformation">
-       <img src="<%= input.image %>" alt="Avatar" >
+       <img src="<%= input.profile_image %>" alt="Avatar" style="border-radius: 50%; width: 150px; height: 150px;" >
        <h2><%= input.fullname %></h2>
+       <h5>@<%= input.username %></h5>
         <p><%= input.bio %></p>
 
         <button >Update your Data</button>
-        <form action="/updatePersonalInformation/" method="post">
-            <input type="hidden" name="image" id="image"  value="<%= input.image %>">
-            <input type="hidden" name="fullname" id="fullname"  value="<%= input.fullname %>">
-            <input type="hidden" name="bio" id="bio"  value="<%= input.bio %>">
+        <form action="/updatePersonalInformation/<%=input.username%>?_method=put"  method="post">
+            <input type="hidden" name="username" id="username"value="<%= input.username %>">
+            <input type="text" name="image" id="image" placeholder="image_url" value="<%= input.profile_image %>">
+            <input type="text" name="fullname" id="fullname" placeholder="fullname" value="<%= input.fullname %>">
+            <input type="text" name="bio" id="bio"  placeholder="Bio" value="<%= input.bio %>">
             <button type="submit">Update</button>
         </form>
         <hr>
     </div>
+<section>
+    
+</section>
+
     </main>
 
     <footer>
 
     </footer>
-    
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/app.js"></script> 
 </body>
 </html>
