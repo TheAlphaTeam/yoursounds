@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% songs.forEach(song=>{%>
+        <section>
+<audio controls>  <source src="<%=song.preview%>"type="audio/mpeg"></audio><br>
+        <img src="<%=song.image%>"><br>
+        <h3><%=song.title%></h3><br>
+        <h2><%= song.name%></h2><br>
+    <%})%>
+       </section>
+</body>
+</html>
