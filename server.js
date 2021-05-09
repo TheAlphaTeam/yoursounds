@@ -9,8 +9,9 @@ const server = express();
 
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
-// const client = new pg.Client(process.env.DATABASE_URL);
 const methodOverride = require('method-override');
+const { profile } = require('console');
+
 server.use(cors());
 server.set('view engine', 'ejs');
 server.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,9 @@ server.get('/', homePage);
 server.post('/singUp', singUp);
 server.post('/login', Login);
 server.get('/TEST', TEST);
-
+// profile page - Basel Atalla 
+// server.get('/myprofile', profileHandler);
+// server.post('/')
 
 
 function homePage(req, res, next) {
@@ -38,8 +41,8 @@ function singUp(req, res, next) {
   let { name, email, password } = req.body;
 
   // checking user existing
-  let SQL = `Select * from persons where email=$1`;
-  let safeValues = [email];
+  let SQL = `Select * from persons where name=$1 or email=$2`;
+  let safeValues = [name ,email];
   client.query(SQL, safeValues)
     .then(result => {
       console.log(req.body);
@@ -58,6 +61,7 @@ function singUp(req, res, next) {
     }); // end of checking user existing
 
 }
+
 
 
 function Login(req, res, next) {
@@ -81,8 +85,16 @@ function TEST(req, res, next) {
   res.render('pages/Test');
 }
 
-
-
+// function updateBookHandler(req,res){
+//   let {authors,title,isbn,image,description} = req.body;
+//   let SQL = `UPDATE books SET authors=$1,title=$2,isbn=$3,image=$4,description=$5 WHERE id=$6;`;
+//   let safeValues = [authors,title,isbn,image,description,req.params.bookID];
+//   console.log(req.params.bookID);
+//   client.query(SQL,safeValues)
+//     .then(()=>{
+//       res.redirect(`/bookDetail/${req.params.bookID}`);
+//     });
+// }
 
 
 client.connect()
