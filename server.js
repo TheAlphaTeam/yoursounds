@@ -21,6 +21,7 @@ server.get('/', homePage);
 server.post('/singUp', singUp);
 server.post('/login', Login);
 server.get('/TEST', TEST);
+server.get('/aboutus', aboutus);
 
 
 
@@ -34,6 +35,15 @@ function homePage(req, res, next) {
     })
     .catch(()=> { throw Error('Cannot get data from the API');});
 }
+
+
+
+
+function aboutus(req,res){
+  res.render('aboutus');
+}
+
+
 
 function singUp(req, res, next) {
   let { name, email, password } = req.body;
