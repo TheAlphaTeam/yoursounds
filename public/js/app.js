@@ -1,18 +1,15 @@
 'use strict';
 
 
-$(function()
-{
-  if(window.localStorage.user)
-  {
+$(function () {
+  if (window.localStorage.user) {
     $('#login').hide();
     $('#signup').hide();
-    $('#loginout').show();
-  }else
-  {
+    $('#logout').show();
+  } else {
     $('#login').show();
     $('#signup').show();
-    $('#loginout').hide();
+    $('#logout').hide();
   }
 });
 
@@ -33,7 +30,8 @@ $('#login').submit(function (e) {
       alert(data);
     else {
       window.localStorage.setItem('user', data);
-      window.location.href = '/';
+      console.log(' file: app.js ~ line 36 ~ data', data);
+      window.location.href = `/myprofile/${JSON.parse(data).username}`;
     }
 
   });
@@ -42,7 +40,7 @@ $('#login').submit(function (e) {
 
 
 
-$('#loginout').submit(function (e) {
+$('#logout').submit(function (e) {
 
   e.preventDefault();
   window.localStorage.removeItem('user');
@@ -67,8 +65,16 @@ $('#signup').submit(function (e) {
       alert(data);
     else {
       window.localStorage.setItem('user', data);
-      window.location.href = '/';
+      window.location.href = `/myprofile/${JSON.parse(data).username}`;
+
     }
 
   });
 });
+
+function change(){
+  document.getElementById('myButton1').innerHTML = '&#10084;';
+}
+
+// $('.username').attr('value',JSON.parse(window.localStorage.getItem('user')).username);
+
