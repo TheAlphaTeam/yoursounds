@@ -31,16 +31,23 @@ server.put('/updatePersonalInformation/:username', updatePersonalIfoHandler);
 server.post('/addsong/:username', addSongHandler);
 
 
+
+
 function profileHandler(req, res) {
   let currentUsername = req.params.username;
   console.log(req.params.username)
-  // let SQL = `Select * from persons where username=$1;`;
-  let SQL = `SELECT * FROM persons  INNER JOIN userevents ON persons.username = userevents.username INNER JOIN usersongs ON persons.username = usersongs.username where persons.username=$1;`;
+ 
+
+  let SQL = `SELECT * FROM persons  LEFT JOIN userevents
+  ON persons.username = userevents.username_event
+  LEFT JOIN usersongs
+  ON persons.username = usersongs.username_songs where persons.username=$1;`;
   let saveValue = [currentUsername];
   client.query(SQL, saveValue)
     .then((userData) => {
-      console.log(userData.rows[0])
-      res.render('pages/myplaylist', { input: userData.rows[0] });
+      console.log(userData.rows)
+     
+      res.render('pages/myplaylist', { input: userData.rows });
     });
 
 }
@@ -65,21 +72,41 @@ function updatePersonalIfoHandler(req, res) {
 function addSongHandler(req, res) {
   let { title, preview, image, name } = req.body;
   let username = req.params.username;
-  let SQL = `select username=$1 from usersongs where artistname=$2 or songtitle=$3 ;`;
+  let SQL = `select username_songs=$1 from usersongs where artistname=$2 or songtitle=$3 ;`;
   let safeValues = [username,name, title];
   client.query(SQL, safeValues).then(ifData => {
     if (ifData.rowCount === 0) {
-      let SQL1 = `INSERT INTO usersongs ( username,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
+      let SQL1 = `INSERT INTO usersongs ( username_songs,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
       let safeValues1 = [username, name, title, image, preview];
       client.query(SQL1, safeValues1);
+      res.send("&#10084;")
     }else {
       let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 or songtitle=$2;`;
       let safeValues2 = [name, title];
       client.query(SQL2, safeValues2);
+      res.send("&#9825;")
     }
   });
-  res.send("dd")
+  
 }
+// function addSongHandler(req, res) {
+//   let { title, preview, image, name } = req.body;
+//   let username = req.params.username;
+//   let SQL = `select username_songs=$1 from usersongs where artistname=$2 or songtitle=$3 ;`;
+//   let safeValues = [username,name, title];
+//   client.query(SQL, safeValues).then(ifData => {
+//     if (ifData.rowCount === 0) {
+//       let SQL1 = `INSERT INTO usersongs ( username_songs,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
+//       let safeValues1 = [username, name, title, image, preview];
+//       client.query(SQL1, safeValues1);
+//     }else {
+//       let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 or songtitle=$2;`;
+//       let safeValues2 = [name, title];
+//       client.query(SQL2, safeValues2);
+//     }
+//   });
+//   res.send("dd")
+// }
 
 
 
@@ -177,6 +204,7 @@ function showFormHandler(req, res) {
       .then((apiData => {
         let songData = apiData.results;
         let dataConstructors = songData.map((item => {
+          console.log(item)
           return new Songs(item);
         }));
         res.render('pages/showsong', { songs: dataConstructors, user: username });
@@ -240,6 +268,7 @@ function Events(Data) {
 
 //Constructors for Songs Data
 function Songs(songData) {
+  this.id=songData.trackId;
   this.preview = songData.previewUrl;
   this.name = songData.artistName;
   this.image = songData.artworkUrl100;

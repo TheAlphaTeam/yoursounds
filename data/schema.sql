@@ -44,18 +44,18 @@ DROP TABLE IF EXISTS userevents;
 
   CREATE TABLE usersongs (
      id SERIAL PRIMARY KEY,
-  username VARCHAR(255),
+  username_songs VARCHAR(255),
   artistname VARCHAR(255),
   songtitle VARCHAR(255), 
   image_url VARCHAR(255),
   cover_preview VARCHAR(255),
   CONSTRAINT fk_person
-      FOREIGN KEY(username) 
+      FOREIGN KEY(username_songs) 
     REFERENCES persons(username)
  );
   CREATE TABLE userevents (
      id SERIAL PRIMARY KEY,
-  username VARCHAR(255),
+  username_event VARCHAR(255),
   event_title VARCHAR(255),
   event_time VARCHAR(255), 
   location VARCHAR(255),
@@ -63,6 +63,6 @@ DROP TABLE IF EXISTS userevents;
   description VARCHAR(255),
   type VARCHAR(255),
    CONSTRAINT fk_person
-      FOREIGN KEY(username) 
+      FOREIGN KEY(username_event) 
     REFERENCES persons(username)
  );

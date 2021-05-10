@@ -14,6 +14,16 @@ $(function () {
 });
 
 
+$('#songslist').click(function(){
+  $('#resultsSongsList').show();
+  $('#resultsEventsList').hide();
+});
+$('#eventslist').click(function(){
+  $('#resultsSongsList').hide();
+  $('#resultsEventsList').show();
+});
+
+
 
 
 $('#login').submit(function (e) {
@@ -72,9 +82,42 @@ $('#signup').submit(function (e) {
   });
 });
 
-function change(){
-  document.getElementById('myButton1').innerHTML = '&#10084;';
-}
+
+
+
+
+
+
+$('.addSong').submit(function (e) {
+
+  e.preventDefault();
+
+  $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
+  image: $('#image').val(),name: $('#name').val()}, function (data, status) {
+
+
+$(`#${$('#id').val()}`).html(data);
+console.log($('#id').val());
+;
+  });
+});
+
+
+$('#deleteSong').submit(function (e) {
+  e.preventDefault();
+
+  $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
+  image: $('#image').val(),name: $('#name').val()}, function (data, status) {
+
+
+window.location.href=`/myprofile/${$('#user').val()}`;
+  });
+});
+
+
+// function change(){
+//   document.getElementById('myButton1').innerHTML = '&#10084;';
+// }
 
 // $('.username').attr('value',JSON.parse(window.localStorage.getItem('user')).username);
 
