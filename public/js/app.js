@@ -5,11 +5,11 @@ $(function () {
   if (window.localStorage.user) {
     $('#login').hide();
     $('#signup').hide();
-    $('#loginout').show();
+    $('#logout').show();
   } else {
     $('#login').show();
     $('#signup').show();
-    $('#loginout').hide();
+    $('#logout').hide();
   }
 });
 
@@ -38,12 +38,7 @@ $('#login').submit(function (e) {
 });
 
 
-$('#loginout').submit(function (e) {
 
-  e.preventDefault();
-  window.localStorage.removeItem('user');
-  window.location.href = '/';
-});
 
 $('#logout').submit(function (e) {
 
@@ -77,6 +72,9 @@ $('#signup').submit(function (e) {
   });
 });
 
+function change(){
+  document.getElementById('myButton1').innerHTML = '&#10084;';
+}
 
 // $('.username').attr('value',JSON.parse(window.localStorage.getItem('user')).username);
 

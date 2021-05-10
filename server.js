@@ -39,9 +39,6 @@ function profileHandler(req, res) {
     .then((userData) => {
       res.render('pages/myplaylist', { input: userData.rows[0] });
     });
-  // let SQL1 = `Select * from usersdata where username=$1 ;`;
-
-
 
 }
 
@@ -63,11 +60,20 @@ function updatePersonalIfoHandler(req, res) {
 }
 
 function addSongHandler(req, res) {
-  let { username, title, preview, image, name } = req.body;
-  let SQL1 = `INSERT INTO usersdata ( username,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
-  let safeValues = [username, name, title, image, preview];
-  client.query(SQL1, safeValues).then(()=>{
-  
+  let { title, preview, image, name } = req.body;
+  let username = req.params.username;
+  let SQL = `select username=$1 from usersdata where artistname=$2 or songtitle=$3 ;`;
+  let safeValues = [username,name, title];
+  client.query(SQL, safeValues).then(ifData => {
+    if (ifData.rowCount === 0) {
+      let SQL1 = `INSERT INTO usersdata ( username,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
+      let safeValues1 = [username, name, title, image, preview];
+      client.query(SQL1, safeValues1);
+    }else {
+      let SQL2 = `DELETE FROM usersdata WHERE artistname=$1 or songtitle=$2;`;
+      let safeValues2 = [name, title];
+      client.query(SQL2, safeValues2);
+    }
   });
 }
 
@@ -157,7 +163,8 @@ function showFormHandler(req, res) {
       then((apiData => {
         let artistData = apiData.body.data;
         let dataConstructors = artistData.map((item => {
-          return new Artist(item);}));
+          return new Artist(item);
+        }));
         res.render('pages/showartist', { songs: dataConstructors, user: username });
       }));//Artist page
   } else if (req.body.name === 'song') {
