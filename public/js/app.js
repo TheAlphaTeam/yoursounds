@@ -88,19 +88,29 @@ $('#signup').submit(function (e) {
 
 
 
-$('.addSong').submit(function (e) {
-
+$('body #addSong').submit(function (e) {
   e.preventDefault();
-
-  $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
-  image: $('#image').val(),name: $('#name').val()}, function (data, status) {
-
-
-$(`#${$('#id').val()}`).html(data);
-console.log($('#id').val());
-;
+  $.post(`/addsong/${e.target.user.value}`, { title:e.target.title.value , preview: e.target.preview.value,
+  image: e.target.image.value,name: e.target.name.value}, function (data, status) {
+$(`#${e.target.id.value}`).html(data);
   });
 });
+
+
+
+// $('.addSong').submit(function (e) {
+
+//   e.preventDefault();
+
+//   $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
+//   image: $('#image').val(),name: $('#name').val()}, function (data, status) {
+
+
+// $(`#${$('#id').val()}`).html(data);
+// console.log($('#id').val());
+// ;
+//   });
+// });
 
 
 $('#deleteSong').submit(function (e) {

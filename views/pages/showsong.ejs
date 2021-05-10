@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
+    <section id='addSong'>
     <% songs.forEach(song=>{%>
         <div>
 <audio controls>  <source src="<%=song.preview%>"type="audio/mpeg"></audio><br>
@@ -15,7 +15,7 @@
         <h3><%=song.title%></h3><br>
         <h2><%= song.name%></h2><br>
         
-        <form class="addSong" action="/addsong/<%=user%>" method="post" >
+        <form id="addSong<%=song.id%>" action="/addsong/<%=user%>" method="post" >
             <input type="hidden" name="id" id="id" value="<%=song.id%>">
             <input type="hidden" name="user" id="user" value="<%=user%>">
             <input type="hidden" name="title" id="title" value="<%=song.title%>">
