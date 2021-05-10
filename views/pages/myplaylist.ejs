@@ -25,7 +25,7 @@
 
         <button >Update your Data</button>
         <form action="/updatePersonalInformation/<%=input.username%>?_method=put"  method="post">
-            <input type="hidden" name="username" id="username"value="<%= input.username %>">
+            <input type="hidden" name="username" id="username"value='<%= input.username %>'>
             <input type="text" name="image" id="image" placeholder="image_url" value="<%= input.profile_image %>">
             <input type="text" name="fullname" id="fullname" placeholder="fullname" value="<%= input.fullname %>">
             <input type="text" name="bio" id="bio"  placeholder="Bio" value="<%= input.bio %>">
