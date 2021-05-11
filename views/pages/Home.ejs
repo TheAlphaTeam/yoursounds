@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <header></header>
+
+    <main>
+    <form action="/singUp" method="POST" id="signup">
+    <input type="text" name="name" id="name" placeholder="User Name" >
+    <input type="email" name="email" id="email" placeholder="Email">
+    <input type="password" name="pass1" id="pass1" placeholder="your password">
+    <input type="password" name="pass2" id="pass2" placeholder="confirm your password">
+    <input type="submit" value="SignUp">
+    </form>
+
+    <form action="/login" method="POST" id="login">  
+    <input type="email" name="emailL" id="emailL" placeholder="email">
+    <input type="password" name="passwordL" id="passwordL" placeholder="password">  
+    <input type="submit" value="Login">
+    </form>
+
+
+
+    <form action="/login" method="POST" id="logout">  
+    <input type="submit" value="LogOut">
+    </form>
+
+
+
+    <%data.map(element=>{%>
+        <div></div>
+    <img src='<%=element.artist.picture_medium%>' alt="" srcset="">
+     <h4><%=element.title%></h4>
+     <audio controls>  <source src='<%=element.preview%>' type="audio/mpeg"></audio>
+</div>
+   <% })%>
+</main>
+
+<footer>
+
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
