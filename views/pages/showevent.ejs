@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    <title>Show</title>
+    <title>Search Result</title>
 </head>
 <body>
     <header ><h1>Upcoming Event </h1> </header>
@@ -14,15 +14,26 @@
     <h2><%= EventArray[0].name %></h2>
     <div class=data>
     <%  EventArray.forEach(event=>{ %>
-        <div >
+        <div style="border: 2px solid black;">
             <h3><%=event.title %></h3>
             <h3><%=event.time %></h3>
             <p><%=event.location%></p>
-            <p> status:<%=event.offer%></p>
+            <p><%=event.offer%></p>
             <p><%=event.description%></p>
-            <p><%=event.type%></p>
-          
+            <p><%=event.venue%></p>
 
+            <form action="/addevent/<%=user%>" method="post">
+            <input type="hidden" name="image" id="image" value="<%= EventArray[0].img%>">
+            <input type="hidden" name="name" id="name" value="<%= EventArray[0].name %>">
+            <input type="hidden" name="title" id="title" value="<%=event.title %>">
+            <input type="hidden" name="time" id="time" value="<%=event.time %>">
+            <input type="hidden" name="location" id="location" value="<%=event.location%>">
+            <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+            <input type="hidden" name="description" id="description" value="<%= event.description%>">
+            <input type="hidden" name="venue" id="venue" value="<%=event.venue%>">
+            <button id="addEvent" type="submit"><h2 id="addeventbutton">&#x271A;</h2></button>
+
+            </form>
         </div>
     <% }) %>
 </div>

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
+    <section id='addSong'>
     <% songs.forEach(song=>{%>
         <div>
 <audio controls>  <source src="<%=song.preview%>"type="audio/mpeg"></audio><br>
@@ -15,12 +15,14 @@
         <h3><%=song.title%></h3><br>
         <h2><%= song.name%></h2><br>
         
-        <form action="/addsong/<%=user%>" method="post" >
-            <input type="hidden" name="title" value="<%=song.preview%>">
-            <input type="hidden" name="preview" value="<%=song.image%>">
-            <input type="hidden" name="image"value="<%=song.title%>">
-            <input type="hidden" name="name"value="<%= song.name%>">
-        <button type="submit"  style="width: 50px;"" ><h2 onclick="change()" id="myButton1" >&#9825;</h2></button>
+        <form id="addSong<%=song.id%>" action="/addsong/<%=user%>" method="post" >
+            <input type="hidden" name="id" id="id" value="<%=song.id%>">
+            <input type="hidden" name="user" id="user" value="<%=user%>">
+            <input type="hidden" name="title" id="title" value="<%=song.title%>">
+            <input type="hidden" name="preview" id="preview" value="<%=song.preview%>">
+            <input type="hidden" name="image" id="image" value="<%=song.image%>">
+            <input type="hidden" name="name" id="name" value="<%= song.name%>">
+        <button type="submit"  style="width: 50px;" ><h2  id="<%=song.id%>" >&#9825;</h2></button>
         </form></div>
     <%})%>
        </section>

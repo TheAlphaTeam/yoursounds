@@ -9,15 +9,15 @@ const server = express();
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 const methodOverride = require('method-override');
-// const { profile, Console } = require('console');
+const { profile, Console } = require('console');
 const fetch = require('node-fetch');
 const { send } = require('process');
-// const { ESRCH } = require('constants');
+const { ESRCH } = require('constants');
 
 server.use(cors());
 server.set('view engine', 'ejs');
 server.use(express.urlencoded({ extended: true }));
-server.use(express.static('./public'));
+server.use(express.static(__dirname + '/public'));
 server.use(methodOverride('_method'));
 
 
@@ -29,15 +29,21 @@ server.get('/TEST', TEST);
 server.get('/myprofile/:username', profileHandler);
 server.put('/updatePersonalInformation/:username', updatePersonalIfoHandler);
 server.post('/addsong/:username', addSongHandler);
+server.post('/addevent/:username', addeventHandler);
+
+
 
 
 function profileHandler(req, res) {
   let currentUsername = req.params.username;
-  let SQL = `Select * from persons where username=$1;`;
+  let SQL = `SELECT * FROM persons  LEFT JOIN userevents
+  ON persons.username = userevents.username_event
+  LEFT JOIN usersongs
+  ON persons.username = usersongs.username_songs where persons.username=$1;`;
   let saveValue = [currentUsername];
   client.query(SQL, saveValue)
     .then((userData) => {
-      res.render('pages/myplaylist', { input: userData.rows[0] });
+      res.render('pages/myplaylist', { input: userData.rows });
     });
 
 }
@@ -47,8 +53,6 @@ function updatePersonalIfoHandler(req, res) {
   let { username, fullname, bio, image } = req.body;
   let SQL = `UPDATE persons SET fullname=$1,bio=$2,profile_image=$3 WHERE username=$4;`;
   let safeValues = [fullname, bio, image, `${username}`];
-  console.log(req.params.username);
-  console.log(username);
   client.query(SQL, safeValues)
     .then(() => {
       res.redirect(`/myprofile/${req.params.username}`);
@@ -62,21 +66,42 @@ function updatePersonalIfoHandler(req, res) {
 function addSongHandler(req, res) {
   let { title, preview, image, name } = req.body;
   let username = req.params.username;
-  let SQL = `select username=$1 from usersdata where artistname=$2 or songtitle=$3 ;`;
+  let SQL = `select username_songs=$1 from usersongs where artistname=$2 or songtitle=$3 ;`;
   let safeValues = [username,name, title];
   client.query(SQL, safeValues).then(ifData => {
     if (ifData.rowCount === 0) {
-      let SQL1 = `INSERT INTO usersdata ( username,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
+      let SQL1 = `INSERT INTO usersongs ( username_songs,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
       let safeValues1 = [username, name, title, image, preview];
       client.query(SQL1, safeValues1);
+      res.send('&#10084;');
     }else {
-      let SQL2 = `DELETE FROM usersdata WHERE artistname=$1 or songtitle=$2;`;
+      let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 or songtitle=$2;`;
       let safeValues2 = [name, title];
       client.query(SQL2, safeValues2);
+      res.send('&#9825;');
     }
   });
 }
 
+function addeventHandler(req, res) {
+  let { image, name, title, time, location,offer,description,venue } = req.body;
+  let username = req.params.username;
+  let SQL = `select username_event=$1 from userevents where event_time=$2 or type=$3 ;`;
+  let safeValues = [username,time,venue];
+  client.query(SQL, safeValues).then(ifData => {
+    if (ifData.rowCount === 0) {
+      let SQL1 = `INSERT INTO userevents (username_event,event_image,artist_name,event_title,event_time,location,offer,description,type) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *;`;
+      let safeValues1 = [username, image, name, title,time, location,offer,description,venue];
+      client.query(SQL1, safeValues1);
+      res.send('&#10084;');
+    }else {
+      let SQL2 = `DELETE FROM userevents WHERE event_title=$1 or event_time=$2;`;
+      let safeValues2 = [title,time];
+      client.query(SQL2, safeValues2);
+      res.send('&#9825;');
+    }
+  });
+}
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -183,6 +208,7 @@ function showFormHandler(req, res) {
 
 //Constructors for Artist Data
 function Artist(artistData) {
+  this.id = artistData.id;
   this.preview = artistData.preview;
   this.name = artistData.artist.name;
   this.image = artistData.album.cover_medium;
@@ -194,15 +220,16 @@ function Artist(artistData) {
 //------------------niveen Event page (fuction with construct)--------------------//
 //Routes
 // request url (browser): localhost:3000/events----/show
-server.get('/events', (req, res) => {
-  res.render('pages/events');
-});
-server.post('/show', eventHandler);
+// server.get('/events', (req, res) => {
+//   res.render('pages/events');
+// });
+server.post('/searchforevents/:username', eventHandler);
 
 
 //----------------------function eventHandler------------------------//
 let event_img;
 function eventHandler(req, res) {
+  let username = req.params.username;
   let ArtistName = req.body.search;
   let URL = `https://rest.bandsintown.com/artists/${ArtistName}/events?app_id=000&date=upcoming`;
   superagent.get(URL)
@@ -210,7 +237,7 @@ function eventHandler(req, res) {
       let x = eventData.body[0];
       event_img = x.artist.thumb_url;
       let eventArr = eventData.body.map(item => new Events(item));
-      res.render('pages/showevent', { EventArray: eventArr });
+      res.render('pages/showevent', { EventArray: eventArr, user: username });
     })
     .catch(error => {
       console.log(error);
@@ -224,10 +251,10 @@ function Events(Data) {
   this.img = event_img;
   this.name = Data.lineup;
   this.title = Data.venue.name;
-  this.offer = Data.offers[0].status;
-  this.time = Data.datetime;
+  this.offer = ' Tickit status: '+Data.offers[0].status;
+  this.time = Data.datetime.replace(/T1+/g, ' ').slice(0,15)+'pm';
   this.description = Data.description;
-  this.type = (Data.venue.type) ? `will be ${Data.venue.type}event` : ` location : ${Data.venue.city} - ${Data.venue.country}`;
+  this.venue = (Data.venue.type) ? `will be ${Data.venue.type}event` : ` location : ${Data.venue.city} - ${Data.venue.country}`;
 
 }
 
@@ -236,6 +263,7 @@ function Events(Data) {
 
 //Constructors for Songs Data
 function Songs(songData) {
+  this.id=songData.trackId;
   this.preview = songData.previewUrl;
   this.name = songData.artistName;
   this.image = songData.artworkUrl100;
