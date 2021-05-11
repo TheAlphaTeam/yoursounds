@@ -66,7 +66,7 @@ function updatePersonalIfoHandler(req, res) {
 function addSongHandler(req, res) {
   let { title, preview, image, name } = req.body;
   let username = req.params.username;
-  let SQL = `select username_songs=$1 from usersongs where artistname=$2 or songtitle=$3 ;`;
+  let SQL = `select username_songs=$1 from usersongs where artistname=$2 and songtitle=$3 ;`;
   let safeValues = [username,name, title];
   client.query(SQL, safeValues).then(ifData => {
     if (ifData.rowCount === 0) {
@@ -75,7 +75,7 @@ function addSongHandler(req, res) {
       client.query(SQL1, safeValues1);
       res.send('&#10084;');
     }else {
-      let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 or songtitle=$2;`;
+      let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 and songtitle=$2;`;
       let safeValues2 = [name, title];
       client.query(SQL2, safeValues2);
       res.send('&#9825;');
@@ -85,7 +85,7 @@ function addSongHandler(req, res) {
 
 function addeventHandler(req, res) {
   let { image, name, title, time, location,offer,description,venue } = req.body;
-  let username = req.params.username;
+  let username = req.params.username; 
   let SQL = `select username_event=$1 from userevents where event_time=$2 or type=$3 ;`;
   let safeValues = [username,time,venue];
   client.query(SQL, safeValues).then(ifData => {
@@ -98,7 +98,7 @@ function addeventHandler(req, res) {
       let SQL2 = `DELETE FROM userevents WHERE event_title=$1 or event_time=$2;`;
       let safeValues2 = [title,time];
       client.query(SQL2, safeValues2);
-      res.send('&#9825;');
+      res.send('&#x271A;');
     }
   });
 }
