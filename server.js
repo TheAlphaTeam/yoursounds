@@ -24,6 +24,7 @@ server.get('/TEST', TEST);
 
 
 
+
 function homePage(req, res, next) {
   let url = `https://api.deezer.com/chart`;
   superagent.get(url)
@@ -122,6 +123,51 @@ function Artist (artistData){
   this.title=artistData.title;
 }
 
+
+
+//------------------niveen Event page (fuction with construct)--------------------//
+//Routes
+// request url (browser): localhost:3000/events----/show
+server.get('/events',(req,res)=>{
+  res.render('pages/events');
+});
+server.post('/show', eventHandler);
+
+
+//----------------------function eventHandler------------------------//
+let event_img;
+function eventHandler(req,res){
+  let ArtistName = req.body.search;
+  let URL = `https://rest.bandsintown.com/artists/${ArtistName}/events?app_id=000&date=upcoming`;
+  superagent.get(URL)
+    .then(eventData => {
+      let x=eventData.body[0];
+      event_img=x.artist.thumb_url;
+      let eventArr = eventData.body.map(item => new Events(item));
+      res.render('pages/showevent', { EventArray: eventArr });
+    })
+    .catch (error=>{
+      console.log(error);
+      res.send(error);
+    });
+}
+
+//----------------------------construct function--------------------//
+
+function Events(Data){
+  this.img=event_img;
+  this.name=Data.lineup;
+  this.title=Data.venue.name;
+  this.offer=Data.offers[0].status;
+  this.time=Data.datetime;
+  this.description=Data.description;
+  this.type = (Data.venue.type)?`will be ${Data.venue.type }event`: ` location : ${Data.venue.city} - ${Data.venue.country}`;
+
+}
+
+
+
+
 //Constructors for Songs Data
 function Songs (songData){
   this.preview=songData.previewUrl;
@@ -130,6 +176,7 @@ function Songs (songData){
   this.title=songData.trackName;
 }
 /////////////////////////////////////////////////end search page////////////////////////////////////////////////////
+
 
 client.connect()
   .then(() => {
