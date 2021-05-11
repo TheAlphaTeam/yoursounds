@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <form action="/login" method="POST" id="logout">  
+            <input type="submit" value="LogOut">
+            </form>
+            <form action="/search/<%=input[0].username %>" >  
+                <input type="submit" value="search">
+                </form>
+       </header>
+      
+       <main>
+       
+        <div class="personalIformation">
+         <img src='<%= input[0].profile_image %>' alt="Avatar" style="border-radius: 50%; width: 150px; height: 150px;" >
+           
+       
+             <h2><%= input[0].fullname %></h2>
+             <h5>@<%= input[0].username %></h5>
+              <p><%= input[0].bio %></p>
+      
+          <button >Update your Data</button> 
+
+                <form action="/updatePersonalInformation/<%=input[0].username%>?_method=put"  method="post">
+            <input type="hidden" name="username" id="username"value='<%= input[0].username %>'>
+            <input type="text" name="image" id="image" placeholder="image_url" value="<%= input[0].profile_image %>">
+            <input type="text" name="fullname" id="fullname" placeholder="fullname" value="<%= input[0].fullname %>">
+            <input type="text" name="bio" id="bio"  placeholder="Bio" value="<%= input[0].bio %>">
+            <button type="submit">Update</button>
+        </form>
+</div>
+
+
+
+
+<div>
+<input type="button" value="Songs List" id='songslist'>
+<input type="button" value="Events List" id='eventslist'>
+
+<div id="resultsSongsList">
+    <% if(input[0].songtitle==null){ %>
+        There's no Tracks added
+     <% } else{ %>  
+         <section>
+             <% input.forEach(song=>{%>
+                 <div>
+         <audio controls>  <source src="<%=song.cover_preview%>"type="audio/mpeg"></audio><br>
+                 <img src="<%=song.image_url%>"><br>
+                 <h3><%=song.songtitle%></h3><br>
+                 <h2><%= song.artistname%></h2><br>
+                 
+                 <form id="deleteSong" action="/addsong/<%=input[0].username%>" method="post" >
+                     <input type="hidden" name="user" id="user" value="<%=input[0].username%>">
+                     <input type="hidden" name="title" id="title" value="<%=song.songtitle%>">
+                     <input type="hidden" name="preview" id="preview"  value="<%=song.cover_preview%>"> 
+                     <input type="hidden" name="image" id="image" value="<%=song.image_url%>"> 
+                     <input type="hidden" name="name"  id="name" value="<%= song.artistname%>">
+                 <button type="submit"  style="width: 50px;" ><h2 id="myButton1" >&#10084;</h2></button>
+                 </form></div>
+             <%})%>
+                </section>
+     <% } %>
+</div>
+
+<div id="resultsEventsList" style="display:none;">
+    <% if(input[0].event_time === null){ %>
+        There's no Events added
+     <% } else{ %>  
+    <div class=data>
+    <%  input.forEach(event=>{ %>
+        <div style="border: 2px solid black;">
+            <img src="<%= event.event_image%>">
+            <h2><%= event.artist_name %></h2>
+            <h3><%=event.event_title %></h3>
+            <h3><%=event.event_time %></h3>
+            <p><%=event.location%></p>
+            <p><%=event.offer%></p>
+            <p><%=event.description%></p>
+            <p><%=event.type%></p>
+
+            <form id="deleteEvent" action="/addevent/<%=event.username_event%>" method="post">
+            <input type="hidden" name="image" id="image" value="<%= event.event_image%>">
+            <input type="hidden" name="name" id="name" value="<%= event.artist_name %>">
+            <input type="hidden" name="title" id="title" value="<%=event.event_title %>">
+            <input type="hidden" name="time" id="time" value="<%=event.event_time %>">
+            <input type="hidden" name="location" id="location" value="<%=event.location%>">
+            <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+            <input type="hidden" name="description" id="description" value="<%= event.description%>">
+            <input type="hidden" name="venue" id="venue" value="<%=event.ytpe%>">
+            <button id="addEvent" type="submit"><h2 id="addeventbutton">&#10084;</h2></button>
+
+            </form>
+        </div>
+    <% }); %>
+ 
+</div>
+
+<% } %>
+
+</div>
+       </main>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+        <script src="/js/app.js"></script> 
+
+</body>
+</html>

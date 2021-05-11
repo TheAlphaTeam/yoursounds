@@ -1,19 +1,26 @@
 'use strict';
 
 
-$(function()
-{
-  if(window.localStorage.user)
-  {
+$(function () {
+  if (window.localStorage.user) {
     $('#login').hide();
     $('#signup').hide();
-    $('#loginout').show();
-  }else
-  {
+    $('#logout').show();
+  } else {
     $('#login').show();
     $('#signup').show();
-    $('#loginout').hide();
+    $('#logout').hide();
   }
+});
+
+
+$('#songslist').click(function () {
+  $('#resultsSongsList').show();
+  $('#resultsEventsList').hide();
+});
+$('#eventslist').click(function () {
+  $('#resultsSongsList').hide();
+  $('#resultsEventsList').show();
 });
 
 
@@ -27,13 +34,14 @@ $('#login').submit(function (e) {
     return;
   }
 
-  $.post('/login', { email: $('#emailL').val().toLowerCase(), password: $('#passwordL').val() }, function (data, status) {
+  $.post('/login', { email: $('#emailL').val().toLowerCase(), password: $('#passwordL').val() }, function (data) {
 
     if (data === `Password or Unsername not correct!`)
       alert(data);
     else {
       window.localStorage.setItem('user', data);
-      window.location.href = '/';
+      console.log(' file: app.js ~ line 36 ~ data', data);
+      window.location.href = `/myprofile/${JSON.parse(data).username}`;
     }
 
   });
@@ -42,7 +50,7 @@ $('#login').submit(function (e) {
 
 
 
-$('#loginout').submit(function (e) {
+$('#logout').submit(function (e) {
 
   e.preventDefault();
   window.localStorage.removeItem('user');
@@ -61,14 +69,69 @@ $('#signup').submit(function (e) {
     alert('Your password not match!');
     return;
   }
-  $.post('/singUp', { name: $('#name').val(), email: $('#email').val().toLowerCase(), password: $('#pass1').val() }, function (data, status) {
+  $.post('/singUp', { name: $('#name').val(), email: $('#email').val().toLowerCase(), password: $('#pass1').val() }, function (data) {
 
     if (data === `This user is aleady signed up!`)
       alert(data);
     else {
       window.localStorage.setItem('user', data);
-      window.location.href = '/';
+      window.location.href = `/myprofile/${JSON.parse(data).username}`;
+
     }
 
   });
 });
+
+
+
+$('body #addSong').submit(function (e) {
+  e.preventDefault();
+  $.post(`/addsong/${e.target.user.value}`, {
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
+  }, function (data) {
+    $(`#${e.target.id.value}`).html(data);
+  });
+});
+
+$('body #addSongByArtist').submit(function (e) {
+  e.preventDefault();
+  $.post(`/addsong/${e.target.user.value}`, {
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
+  }, function (data) {
+    $(`#${e.target.id.value}`).html(data);
+  });
+});
+
+$('body #deleteSong').submit(function (e) {
+  e.preventDefault();
+
+  $.post(`/addsong/${$('#user').val()}`, {
+
+    title: e.target.title.value, preview:  e.target.preview.value,
+    image:e.target.image.value, name:e.target.name.value
+  }, function (data) {
+    $('#myButton1').html(data);
+
+    window.location.href = `/myprofile/${$('#user').val()}`;
+  });
+});
+
+
+$('body #deleteEvent').submit(function (e) {
+  e.preventDefault();
+
+  $.post(`/addevent/${$('#user').val()}`, {
+
+    title: e.target.title.value, image:  e.target.image.value,
+    location:e.target.locateion.value, name:e.target.name.value,
+    offer:e.target.offer.value, time:e.target.time.value,
+    venue: e.target.venue.value
+  }, function (data) {
+    $('#addeventbutton').html(data);
+
+    window.location.href = `/myprofile/${$('#user').val()}`;
+  });
+});
+
