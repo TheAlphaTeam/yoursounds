@@ -46,7 +46,7 @@
 
 <div id="resultsSongsList">
     <% if(input[0].songtitle==null){ %>
-        No data
+        There's no Tracks added
      <% } else{ %>  
          <section>
              <% input.forEach(song=>{%>
@@ -68,16 +68,47 @@
                 </section>
      <% } %>
 </div>
+
 <div id="resultsEventsList" style="display:none;">
-events songs
+    <% if(input[0].event_time === null){ %>
+        There's no Events added
+     <% } else{ %>  
+    <div class=data>
+    <%  input.forEach(event=>{ %>
+        <div style="border: 2px solid black;">
+            <img src="<%= event.event_image%>">
+            <h2><%= event.artist_name %></h2>
+            <h3><%=event.event_title %></h3>
+            <h3><%=event.event_time %></h3>
+            <p><%=event.location%></p>
+            <p><%=event.offer%></p>
+            <p><%=event.description%></p>
+            <p><%=event.type%></p>
+
+            <form id="deleteEvent" action="/addevent/<%=event.username_event%>" method="post">
+            <input type="hidden" name="image" id="image" value="<%= event.event_image%>">
+            <input type="hidden" name="name" id="name" value="<%= event.artist_name %>">
+            <input type="hidden" name="title" id="title" value="<%=event.event_title %>">
+            <input type="hidden" name="time" id="time" value="<%=event.event_time %>">
+            <input type="hidden" name="location" id="location" value="<%=event.location%>">
+            <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+            <input type="hidden" name="description" id="description" value="<%= event.description%>">
+            <input type="hidden" name="venue" id="venue" value="<%=event.ytpe%>">
+            <button id="addEvent" type="submit"><h2 id="addeventbutton">&#10084;</h2></button>
+
+            </form>
+        </div>
+    <% }); %>
+ 
 </div>
 
+<% } %>
 
 </div>
        </main>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-<script src="/js/app.js"></script> 
+        <script src="/js/app.js"></script> 
 
 </body>
 </html>

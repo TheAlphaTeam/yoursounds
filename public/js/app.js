@@ -14,11 +14,11 @@ $(function () {
 });
 
 
-$('#songslist').click(function(){
+$('#songslist').click(function () {
   $('#resultsSongsList').show();
   $('#resultsEventsList').hide();
 });
-$('#eventslist').click(function(){
+$('#eventslist').click(function () {
   $('#resultsSongsList').hide();
   $('#resultsEventsList').show();
 });
@@ -34,7 +34,7 @@ $('#login').submit(function (e) {
     return;
   }
 
-  $.post('/login', { email: $('#emailL').val().toLowerCase(), password: $('#passwordL').val() }, function (data, status) {
+  $.post('/login', { email: $('#emailL').val().toLowerCase(), password: $('#passwordL').val() }, function (data) {
 
     if (data === `Password or Unsername not correct!`)
       alert(data);
@@ -69,7 +69,7 @@ $('#signup').submit(function (e) {
     alert('Your password not match!');
     return;
   }
-  $.post('/singUp', { name: $('#name').val(), email: $('#email').val().toLowerCase(), password: $('#pass1').val() }, function (data, status) {
+  $.post('/singUp', { name: $('#name').val(), email: $('#email').val().toLowerCase(), password: $('#pass1').val() }, function (data) {
 
     if (data === `This user is aleady signed up!`)
       alert(data);
@@ -84,50 +84,54 @@ $('#signup').submit(function (e) {
 
 
 
-
-
-
-
 $('body #addSong').submit(function (e) {
   e.preventDefault();
-  $.post(`/addsong/${e.target.user.value}`, { title:e.target.title.value , preview: e.target.preview.value,
-  image: e.target.image.value,name: e.target.name.value}, function (data, status) {
-$(`#${e.target.id.value}`).html(data);
+  $.post(`/addsong/${e.target.user.value}`, {
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
+  }, function (data) {
+    $(`#${e.target.id.value}`).html(data);
   });
 });
 
+$('body #addSongByArtist').submit(function (e) {
+  e.preventDefault();
+  $.post(`/addsong/${e.target.user.value}`, {
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
+  }, function (data) {
+    $(`#${e.target.id.value}`).html(data);
+  });
+});
 
-
-// $('.addSong').submit(function (e) {
-
-//   e.preventDefault();
-
-//   $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
-//   image: $('#image').val(),name: $('#name').val()}, function (data, status) {
-
-
-// $(`#${$('#id').val()}`).html(data);
-// console.log($('#id').val());
-// ;
-//   });
-// });
-
-
-$('#deleteSong').submit(function (e) {
+$('body #deleteSong').submit(function (e) {
   e.preventDefault();
 
-  $.post(`/addsong/${$('#user').val()}`, { title: $('#title').val(), preview: $('#preview').val(),
-  image: $('#image').val(),name: $('#name').val()}, function (data, status) {
+  $.post(`/addsong/${$('#user').val()}`, {
 
+    title: e.target.title.value, preview:  e.target.preview.value,
+    image:e.target.image.value, name:e.target.name.value
+  }, function (data) {
+    $('#myButton1').html(data);
 
-window.location.href=`/myprofile/${$('#user').val()}`;
+    window.location.href = `/myprofile/${$('#user').val()}`;
   });
 });
 
 
-// function change(){
-//   document.getElementById('myButton1').innerHTML = '&#10084;';
-// }
+$('body #deleteEvent').submit(function (e) {
+  e.preventDefault();
 
-// $('.username').attr('value',JSON.parse(window.localStorage.getItem('user')).username);
+  $.post(`/addevent/${$('#user').val()}`, {
+
+    title: e.target.title.value, image:  e.target.image.value,
+    location:e.target.locateion.value, name:e.target.name.value,
+    offer:e.target.offer.value, time:e.target.time.value,
+    venue: e.target.venue.value
+  }, function (data) {
+    $('#addeventbutton').html(data);
+
+    window.location.href = `/myprofile/${$('#user').val()}`;
+  });
+});
 
