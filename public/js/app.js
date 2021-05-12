@@ -160,3 +160,5 @@ $('body #deleteEvent').submit(function (e) {
   });
 });
 
+
+

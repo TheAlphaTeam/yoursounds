@@ -236,6 +236,7 @@ function eventHandler(req, res) {
     .then(eventData => {
       let x = eventData.body[0];
       event_img = x.artist.thumb_url;
+      
       let eventArr = eventData.body.map(item => new Events(item));
       res.render('pages/showevent', { EventArray: eventArr, user: username });
     })
