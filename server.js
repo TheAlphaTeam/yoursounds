@@ -219,10 +219,6 @@ function showFormHandler(req, res) {
           return new Songs(item);
         }));
         res.render('pages/showsong', { songs: dataConstructors, user: username })
-          .catch(() => {
-            res.render('pages/Erorr');
-
-          });
       }));//song page
   }
 }

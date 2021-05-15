@@ -16,14 +16,16 @@
             <hr class="hr">
             <hr class="hr">
             <hr class="hr1">
-        <section id='addSongByArtist'>
+
+        <section class="flex">
+<section id='addSongByArtist'  class="A-flex">
             <% songs.forEach(song=>{%>
-                <div>
-        <audio controls>  <source src="<%=song.preview%>"type="audio/mpeg"></audio><br>
-                <img src="<%=song.image%>"><br>
-                <h3><%=song.title%></h3><br>
-                <h2><%= song.name%></h2><br>
-                
+           <div class="card">
+            <img class="logo_babil" src="/images/logo200cropped.png">
+                <img class="imgSong" src="<%=song.image%>">
+                <h3 class="title" ><%=song.title%></h3>
+                <h2 class="title"><%= song.name%></h2>
+        <audio controls class="button">  <source src="<%=song.preview%>"type="audio/mpeg"></audio>
                 <form id="addSong<%=song.id%>" action="/addsong/<%=user%>" method="post" >
                     <input type="hidden" name="id" id="id" value="<%=song.id%>">
                     <input type="hidden" name="user" id="user" value="<%=user%>">
@@ -31,10 +33,13 @@
                     <input type="hidden" name="preview" id="preview" value="<%=song.preview%>">
                     <input type="hidden" name="image" id="image" value="<%=song.image%>">
                     <input type="hidden" name="name" id="name" value="<%= song.name%>">
-                <button type="submit"  style="width: 50px;" ><h2  id="artist<%=song.id%>" >&#9825;</h2></button>
-                </form></div>
+                <button type="submit" class="button" ><h2  id="artist<%=song.id%>" >&#9825;</h2></button>
+                </form>
+            </div>
             <%})%>
-               </section>
+</section>
+</section>
+<%- include('footer')%> 
                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
        <script src="/js/app.js"></script> 
        <hr class="hr2">
@@ -42,5 +47,6 @@
             <hr class="hr">
             <hr class="hr1">
     </main>
+    
 </body>
 </html>
