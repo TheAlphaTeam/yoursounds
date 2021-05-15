@@ -1,14 +1,24 @@
 <header>
 
-  <img class="logo1" src="../videos/logoWhite.png" alt="">  
-        <ul id="ulnavbar">
-            <li><a href="/"> Home </a></li>
-            <li><a href="pages/aboutus"> Team </a></li>
-            <li><a href=" pages/search"> Search</a></li>
-            <li><a href="pages/myplaylist"> Myprofile </a></li> 
-            <li><a href="/"> LogOut </a></li> 
+  <img class="logo1" src="/images/logoWhite.png" alt="">
+  <div id="ulnavbar">
 
-        </ul>
-   
-   
+
+    <form action="/myprofile/username" method="GET" >
+      <button type="submit" class="buttonnavBarstyle">MyProfile</button>
+    </form>
+    <form action="/search/username" method="GET" >
+      <button type="submit" class="buttonnavBarstyle">Search</button>
+    </form>
+    
+    <form action="/uboutUs" method="GET" >
+      <button type="submit" class="buttonnavBarstyle">Our Team</button>a
+    </form>
+    <form action="/login" method="POST" id="logout">
+      <button type="submit" class="buttonnavBarstyle">LogOut</button>
+    </form>
+
+  </div>
+
+
 </header>

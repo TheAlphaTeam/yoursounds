@@ -5,18 +5,21 @@ $(function () {
   if (window.localStorage.user) {
     $('#login').hide();
     $('#signup').hide();
-    $('#logout').show();
+    // $('#logout').show();
   } else {
     $('#login').show();
     $('#signup').show();
-    $('#logout').hide();
+    // $('#logout').hide();
   }
 });
 
-
-$('#songslist').click(function () {
+$('#list').click(function () {
+  $('#resultsEventsList').show();
   $('#resultsSongsList').show();
+});
+$('#songslist').click(function () {
   $('#resultsEventsList').hide();
+  $('#resultsSongsList').show();
 });
 $('#eventslist').click(function () {
   $('#resultsSongsList').hide();
@@ -112,8 +115,8 @@ $('body #deleteSong').submit(function (e) {
 
   $.post(`/addsong/${$('#user').val()}`, {
 
-    title: e.target.title.value, preview:  e.target.preview.value,
-    image:e.target.image.value, name:e.target.name.value
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
   }, function (data) {
     $('#myButton1').html(data);
 
@@ -130,11 +133,11 @@ $('body #addEvents').submit(function (e) {
 
   $.post(`/addevent/${$('#user').val()}`, {
 
-    image:  e.target.image.value, name:e.target.name.value,
-    title: e.target.title.value, time:e.target.time.value,
-    location:e.target.location.value,
-    offer:e.target.offer.value,
-    description:e.target.description.value,
+    image: e.target.image.value, name: e.target.name.value,
+    title: e.target.title.value, time: e.target.time.value,
+    location: e.target.location.value,
+    offer: e.target.offer.value,
+    description: e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $(`#addeventbutton${e.target.index.value}`).html(data);
@@ -147,17 +150,23 @@ $('body #deleteEvent').submit(function (e) {
 
   $.post(`/addevent/${$('#user').val()}`, {
 
-    image:  e.target.image.value, name:e.target.name.value,
-    title: e.target.title.value, time:e.target.time.value,
-    location:e.target.location.value,
-    offer:e.target.offer.value,
-    description:e.target.description.value,
+    image: e.target.image.value, name: e.target.name.value,
+    title: e.target.title.value, time: e.target.time.value,
+    location: e.target.location.value,
+    offer: e.target.offer.value,
+    description: e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $('#addeventbutton').html(data);
 
     window.location.href = `/myprofile/${$('#user').val()}`;
   });
+});
+
+
+$('#updateForm').hide();
+$('#updateBtn').on('click', function () {
+  $('#updateForm').toggle();
 });
 
 

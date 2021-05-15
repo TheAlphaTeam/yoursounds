@@ -46,6 +46,9 @@ function profileHandler(req, res) {
   client.query(SQL, saveValue)
     .then((userData) => {
       res.render('pages/myplaylist', { input: userData.rows });
+    }).catch(() => {
+      res.redirect('pages/Erorr');
+
     });
 
 }
@@ -58,9 +61,9 @@ function updatePersonalIfoHandler(req, res) {
   client.query(SQL, safeValues)
     .then(() => {
       res.redirect(`/myprofile/${req.params.username}`);
-    }).catch(error => {
-      console.log(error);
-      res.send(error);
+    }).catch(() => {
+      res.render('pages/Erorr');
+
     });
 
 }
@@ -69,39 +72,45 @@ function addSongHandler(req, res) {
   let { title, preview, image, name } = req.body;
   let username = req.params.username;
   let SQL = `select username_songs=$1 from usersongs where artistname=$2 and songtitle=$3 ;`;
-  let safeValues = [username,name, title];
+  let safeValues = [username, name, title];
   client.query(SQL, safeValues).then(ifData => {
     if (ifData.rowCount === 0) {
       let SQL1 = `INSERT INTO usersongs ( username_songs,artistname,songtitle,image_url,cover_preview) VALUES($1,$2,$3,$4,$5) RETURNING *;`;
       let safeValues1 = [username, name, title, image, preview];
       client.query(SQL1, safeValues1);
       res.send('&#10084;');
-    }else {
+    } else {
       let SQL2 = `DELETE FROM usersongs WHERE artistname=$1 and songtitle=$2;`;
       let safeValues2 = [name, title];
       client.query(SQL2, safeValues2);
       res.send('&#9825;');
     }
+  }).catch(() => {
+    res.render('pages/Erorr');
+
   });
 }
 
 function addeventHandler(req, res) {
-  let { image, name, title, time, location,offer,description,venue } = req.body;
-  let username = req.params.username; 
+  let { image, name, title, time, location, offer, description, venue } = req.body;
+  let username = req.params.username;
   let SQL = `select username_event=$1 from userevents where event_time=$2 or type=$3 ;`;
-  let safeValues = [username,time,venue];
+  let safeValues = [username, time, venue];
   client.query(SQL, safeValues).then(ifData => {
     if (ifData.rowCount === 0) {
       let SQL1 = `INSERT INTO userevents (username_event,event_image,artist_name,event_title,event_time,location,offer,description,type) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *;`;
-      let safeValues1 = [username, image, name, title,time, location,offer,description,venue];
+      let safeValues1 = [username, image, name, title, time, location, offer, description, venue];
       client.query(SQL1, safeValues1);
       res.send('&#10084;');
-    }else {
+    } else {
       let SQL2 = `DELETE FROM userevents WHERE event_title=$1 or event_time=$2;`;
-      let safeValues2 = [title,time];
+      let safeValues2 = [title, time];
       client.query(SQL2, safeValues2);
       res.send('&#x271A;');
     }
+  }).catch(() => {
+    res.render('pages/Erorr');
+
   });
 }
 
@@ -112,7 +121,7 @@ function homePage(req, res) {
   superagent.get(url)
     .then(response => {
       let result = response.body;
-      res.render('pages/Home', { data: result.tracks.data});
+      res.render('pages/Home', { data: result.tracks.data });
     })
     .catch(() => { throw Error('Cannot get data from the API'); });
 }
@@ -138,7 +147,11 @@ function singUp(req, res) {
       }
       else
         res.send(`This user is aleady signed up!`);
-    }); // end of checking user existing
+    })
+    .catch(() => {
+      res.render('pages/Erorr');
+
+    });// end of checking user existing
 
 }
 
@@ -175,6 +188,9 @@ function searchHandler(req, res) {
   client.query(SQL, safeValues)
     .then(result => {
       res.render('pages/search', { user: result.rows[0].username });
+    }).catch(() => {
+      res.render('pages/Erorr');
+
     });
 
 }
@@ -193,7 +209,11 @@ function showFormHandler(req, res) {
         let dataConstructors = artistData.map((item => {
           return new Artist(item);
         }));
-        res.render('pages/showartist', { songs: dataConstructors, user: username });
+        res.render('pages/showartist', { songs: dataConstructors, user: username })
+          .catch(() => {
+            res.render('pages/Erorr');
+
+          });
       }));//Artist page
   } else if (req.body.name === 'song') {
     fetch(`https://itunes.apple.com/search?attribute=songTerm&entity=song&term=${term}`)
@@ -203,7 +223,11 @@ function showFormHandler(req, res) {
         let dataConstructors = songData.map((item => {
           return new Songs(item);
         }));
-        res.render('pages/showsong', { songs: dataConstructors, user: username });
+        res.render('pages/showsong', { songs: dataConstructors, user: username })
+          .catch(() => {
+            res.render('pages/Erorr');
+
+          });
       }));//song page
   }
 }
@@ -242,9 +266,8 @@ function eventHandler(req, res) {
       let eventArr = eventData.body.map(item => new Events(item));
       res.render('pages/showevent', { EventArray: eventArr, user: username });
     })
-    .catch(error => {
-      console.log(error);
-      res.send(error);
+    .catch(() => {
+      res.render('pages/Erorr');
     });
 }
 
@@ -254,8 +277,8 @@ function Events(Data) {
   this.img = event_img;
   this.name = Data.lineup;
   this.title = Data.venue.name;
-  this.offer = ' Tickit status: '+Data.offers[0].status;
-  this.time = Data.datetime.replace(/T1+/g, ' ').slice(0,15)+'pm';
+  this.offer = ' Tickit status: ' + Data.offers[0].status;
+  this.time = Data.datetime.replace(/T1+/g, ' ').slice(0, 15) + 'pm';
   this.description = Data.description;
   this.venue = (Data.venue.type) ? `will be ${Data.venue.type}event` : ` location : ${Data.venue.city} - ${Data.venue.country}`;
 
@@ -266,7 +289,7 @@ function Events(Data) {
 
 //Constructors for Songs Data
 function Songs(songData) {
-  this.id=songData.trackId;
+  this.id = songData.trackId;
   this.preview = songData.previewUrl;
   this.name = songData.artistName;
   this.image = songData.artworkUrl100;
@@ -274,7 +297,7 @@ function Songs(songData) {
 }
 /////////////////////////////////////////////////end search page////////////////////////////////////////////////////
 
-server.get('*', (req,res) =>{
+server.get('*', (req, res) => {
   res.render('pages/Erorr');
 });
 
