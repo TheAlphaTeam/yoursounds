@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS persons;
 DROP TABLE IF EXISTS usersongs; 
 DROP TABLE IF EXISTS userevents; 
+DROP TABLE IF EXISTS persons;
 
  CREATE TABLE persons (
   id SERIAL PRIMARY KEY,

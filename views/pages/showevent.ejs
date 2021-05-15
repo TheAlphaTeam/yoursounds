@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c97be261b7fb18b96d1bd0924eda589d9f3df5e
     <title>Search Result</title>
+    <link rel="stylesheet" href="../style/style.css">
 </head>
+
 <body>
+<<<<<<< HEAD
     <header ><h1>Upcoming Event </h1> </header>
 <main>
     <section id="addEvents">
@@ -43,5 +51,53 @@
 </main>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/app.js"></script> 
+=======
+
+    <%- include('header')%>
+
+    <main>
+        <hr class="hr2">
+        <hr class="hr">
+        <hr class="hr">
+        <hr class="hr1">
+        <section id="addEvents">
+            <img src="<%= EventArray[0].img%>">
+            <h2><%= EventArray[0].name %></h2>
+            <div class=data>
+                <%  EventArray.forEach((event,index)=>{ %>
+                <div>
+                    <h3><%=event.title %></h3>
+                    <h3><%=event.time %></h3>
+                    <p><%=event.location%></p>
+                    <p><%=event.offer%></p>
+                    <p><%=event.description%></p>
+                    <p><%=event.venue%></p>
+
+                    <form action="/addevent/<%=user%>" method="post">
+                        <input type="hidden" name="user" id="user" value="<%= user%>">
+                        <input type="hidden" name="index" id="index" value="<%= index%>">
+                        <input type="hidden" name="image" id="image" value="<%= EventArray[0].img%>">
+                        <input type="hidden" name="name" id="name" value="<%= EventArray[0].name %>">
+                        <input type="hidden" name="title" id="title" value="<%=event.title %>">
+                        <input type="hidden" name="time" id="time" value="<%=event.time %>">
+                        <input type="hidden" name="location" id="location" value="<%=event.location%>">
+                        <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+                        <input type="hidden" name="description" id="description" value="<%= event.description%>">
+                        <input type="hidden" name="venue" id="venue" value="<%=event.venue%>">
+                        <button id="addEvent" type="submit">
+                            <h2 id="addeventbutton<%=index%>">&#x271A;</h2>
+                        </button>
+
+                    </form>
+                </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/app.js"></script>
+>>>>>>> 3c97be261b7fb18b96d1bd0924eda589d9f3df5e
 </body>
+
 </html>
