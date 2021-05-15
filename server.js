@@ -25,6 +25,8 @@ server.get('/', homePage);
 server.post('/singUp', singUp);
 server.post('/login', Login);
 server.get('/TEST', TEST);
+
+
 // ////////////////////////profile page - Basel Atalla///////////////////////////
 server.get('/myprofile/:username', profileHandler);
 server.put('/updatePersonalInformation/:username', updatePersonalIfoHandler);
@@ -106,11 +108,11 @@ function addeventHandler(req, res) {
 
 /////////////////////////////////////////////////////////////////////////
 function homePage(req, res) {
-  let url = `https://api.deezer.com/chart`;
+  let url = `https://api.deezer.com/chart&limit=9`;
   superagent.get(url)
     .then(response => {
       let result = response.body;
-      res.render('pages/Home', { data: result.tracks.data });
+      res.render('pages/Home', { data: result.tracks.data});
     })
     .catch(() => { throw Error('Cannot get data from the API'); });
 }
@@ -167,6 +169,7 @@ function TEST(req, res) {
 server.get('/search/:username', searchHandler);
 function searchHandler(req, res) {
   let usrename = req.params.username;
+  console.log(usrename);
   let SQL = `Select * from persons where  username=$1;`;
   let safeValues = [usrename];
   client.query(SQL, safeValues)
@@ -271,6 +274,9 @@ function Songs(songData) {
 }
 /////////////////////////////////////////////////end search page////////////////////////////////////////////////////
 
+server.get('*', (req,res) =>{
+  res.render('pages/Erorr');
+});
 
 client.connect()
   .then(() => {
