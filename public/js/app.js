@@ -1,22 +1,13 @@
 'use strict';
 
 
-$(function () {
-  if (window.localStorage.user) {
-    $('#login').hide();
-    $('#signup').hide();
-    $('#logout').show();
-  } else {
-    $('#login').show();
-    $('#signup').show();
-    $('#logout').hide();
-  }
-});
-
-
-$('#songslist').click(function () {
+$('#list').click(function () {
+  $('#resultsEventsList').show();
   $('#resultsSongsList').show();
+});
+$('#songslist').click(function () {
   $('#resultsEventsList').hide();
+  $('#resultsSongsList').show();
 });
 $('#eventslist').click(function () {
   $('#resultsSongsList').hide();
@@ -86,7 +77,7 @@ $('#signup').submit(function (e) {
 
 $('body #addSong').submit(function (e) {
   e.preventDefault();
-  console.log(e.target.user.value)
+  console.log(e.target.user.value);
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
@@ -97,7 +88,7 @@ $('body #addSong').submit(function (e) {
 
 $('body #addSongByArtist').submit(function (e) {
   e.preventDefault();
-  console.log(e.target.user.value)
+  console.log(e.target.user.value);
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
@@ -112,8 +103,8 @@ $('body #deleteSong').submit(function (e) {
 
   $.post(`/addsong/${$('#user').val()}`, {
 
-    title: e.target.title.value, preview:  e.target.preview.value,
-    image:e.target.image.value, name:e.target.name.value
+    title: e.target.title.value, preview: e.target.preview.value,
+    image: e.target.image.value, name: e.target.name.value
   }, function (data) {
     $('#myButton1').html(data);
 
@@ -127,14 +118,14 @@ $('body #deleteSong').submit(function (e) {
 
 $('body #addEvents').submit(function (e) {
   e.preventDefault();
- 
+
   $.post(`/addevent/${$('#user').val()}`, {
- 
-    image:  e.target.image.value, name:e.target.name.value,
-    title: e.target.title.value, time:e.target.time.value,
-    location:e.target.location.value,
-    offer:e.target.offer.value, 
-    description:e.target.description.value, 
+
+    image: e.target.image.value, name: e.target.name.value,
+    title: e.target.title.value, time: e.target.time.value,
+    location: e.target.location.value,
+    offer: e.target.offer.value,
+    description: e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $(`#addeventbutton${e.target.index.value}`).html(data);
@@ -147,11 +138,11 @@ $('body #deleteEvent').submit(function (e) {
 
   $.post(`/addevent/${$('#user').val()}`, {
 
-    image:  e.target.image.value, name:e.target.name.value,
-    title: e.target.title.value, time:e.target.time.value,
-    location:e.target.location.value,
-    offer:e.target.offer.value, 
-    description:e.target.description.value, 
+    image: e.target.image.value, name: e.target.name.value,
+    title: e.target.title.value, time: e.target.time.value,
+    location: e.target.location.value,
+    offer: e.target.offer.value,
+    description: e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $('#addeventbutton').html(data);
@@ -160,3 +151,26 @@ $('body #deleteEvent').submit(function (e) {
   });
 });
 
+
+$('#updateForm').hide();
+$('#updateBtn').on('click', function () {
+  $('#updateForm').toggle();
+});
+
+
+
+$('#loginBtn').show();
+$('#updateSingUp').hide();
+$('#signupBtn').on('click',function(){
+  $('#signupBtn').css( 'margin-top','180px');
+  $('#loginBtn').toggle();
+  $('#updateSingUp').toggle();
+});
+
+$('#signupBtn').show();
+$('#updateLogin').hide();
+$('#loginBtn').on('click',function(){
+  $('#loginBtn').css( 'margin-top','180px');
+  $('#signupBtn').toggle();
+  $('#updateLogin').toggle();
+});

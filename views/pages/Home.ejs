@@ -1,50 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style/style.css">
+  <title>Home</title>
 </head>
+
 <body>
-    <header></header>
+  <main>
+    <section>
+      <div style="background: url(https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg)"
+        class="page-holder bg-cover">
 
-    <main>
-    <form action="/singUp" method="POST" id="signup">
-    <input type="text" name="name" id="name" placeholder="User Name" >
-    <input type="email" name="email" id="email" placeholder="Email">
-    <input type="password" name="pass1" id="pass1" placeholder="your password">
-    <input type="password" name="pass2" id="pass2" placeholder="confirm your password">
-    <input type="submit" value="SignUp">
-    </form>
+        <nav class="nav1">
+          <img class="logo" src="/images/logo3.png" alt="">
 
-    <form action="/login" method="POST" id="login">  
-    <input type="email" name="emailL" id="emailL" placeholder="email">
-    <input type="password" name="passwordL" id="passwordL" placeholder="password">  
-    <input type="submit" value="Login">
-    </form>
+          <ul>
+            <li> <a href="/views/aboutus"> About US </a> </li>
+          </ul>
+        </nav>
 
+        <button id='signupBtn'>Register</button>
+        <button id='loginBtn'>Login </button>
 
 
-    <form action="/login" method="POST" id="logout">  
-    <input type="submit" value="LogOut">
-    </form>
+        <div class="form-style-8">
+
+          <section id="updateSingUp">
+            <form action="/singUp" method="POST" id="signup" class="signup">
+              <input class="inputHome" type="text" name="name" id="name" placeholder="User Name">
+              <input class="inputHome" type="email" name="email" id="email" placeholder="Email">
+              <input class="inputHome" type="password" name="pass1" id="pass1" placeholder="your password">
+              <input class="inputHome" type="password" name="pass2" id="pass2" placeholder="confirm your password">
+              <input class="inputHome" type="submit" value="SignUp">
+            </form>
+          </section>
+        </div>
 
 
+        <div class="form-style-8">
+
+          <section id="updateLogin">
+            <form action="/login" method="POST" id="login" class="login" >  
+                    <input class =" inputHome"type="email" name="emailL" id="emailL" placeholder="email">
+              <input class="inputHome" type="password" name="passwordL" id="passwordL" placeholder="password">
+              <input class="inputHome" type="submit" value="Login">
+            </form>
+          </section>
+        </div>
+
+
+        <!-- <form action="/login" method="POST" id="logout">  
+                    <input class ="inputHome" type="submit" value="LogOut">
+                    </form> -->
+
+
+    </section>
+    <!-- <section class ="vd">   
+        <div class="overlay"></div>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+          <source src="../videos/dance.mp4" type="video/mp4">
+        </video>
+    </section> -->
+    <div class="album">
+
+      <h2>LATEST ALBUM </h2>
+
+      <hr class="hr2">
+      <hr class="hr">
+      <hr class="hr">
+      <hr class="hr1">
+      <p> We sing the best <strong class="theme-color">Songs </strong>
+        and now we control the world best<strong class="theme-color"> Music </strong> .
+      </p>
+
+    </div>
 
     <%data.map(element=>{%>
-        <div></div>
-    <img src='<%=element.artist.picture_medium%>' alt="" srcset="">
-     <h4><%=element.title%></h4>
-     <audio controls>  <source src='<%=element.preview%>' type="audio/mpeg"></audio>
-</div>
-   <% })%>
-</main>
+    <div class="api">
+      <img src='<%=element.artist.picture_medium%>' alt="" srcset="" class=" imgData" style="border-radius: 50%;">
 
-<footer>
+      <h4><%=element.title%></h4>
 
-</footer>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/app.js"></script>
+      <audio class="audio" controls>
+        <source src='<%=element.preview%>' type="audio/mpeg">
+      </audio>
+    </div>
+    <% })%>
+
+
+
+    <hr class="hr2">
+    <hr class="hr">
+    <hr class="hr">
+    <hr class="hr1">
+  </main>
+
+  <footer>
+
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/app.js"></script>
 </body>
+
 </html>

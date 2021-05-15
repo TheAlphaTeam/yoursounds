@@ -4,11 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>search</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/style.css" />
   </head>
+
   <body>
+    <%- include('header')%>
+
     <main>
+      <hr class="hr2" />
+      <hr class="hr" />
+      <hr class="hr" />
+      <hr class="hr1" />
       <div id="searchforSong">
         <form action="/search/<%=user%>" method="POST" class="searchForm">
           <input
@@ -30,7 +37,6 @@
 
           <button class="btn-song">Search for songs 🔎</button>
         </form>
-        <!-- <img  class="searchImg" src="../../image/Person Playing A Guitar.gif" >; -->
       </div>
       <div id="searchForEvent"><%- include('events')%></div>
     </main>

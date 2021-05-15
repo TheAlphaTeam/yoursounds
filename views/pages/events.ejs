@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
 
     <title>event</title>
-</head>
-<header>
-</header>
-<body>
+  </head>
 
- <div class="event-form">
+  <body>
+    <hr class="hr2" />
+    <hr class="hr" />
+    <hr class="hr" />
+    <hr class="hr1" />
 
- 
-    <form action="/searchforevents/<%=user%>" method="POST"  >
+    <div class="event-form">
+      <form action="/searchforevents/<%=user%>" method="POST">
         <div class="event-input">
-            <h3 class="Music-Events" >Music Events 🎵  </h3>
-        <input id="text" type="text" name="search" placeholder=" Artist name ...." required  class="event-search">
-        
-            <button class="btn-event" >Search for Events 🔎 </button>
+          <h3 class="Music-Events">Music Events 🎵</h3>
+          <input
+            id="text"
+            type="text"
+            name="search"
+            placeholder=" Artist name ...."
+            required
+            class="event-search"
+          />
+
+          <button class="btn-event">Search for Events 🔎</button>
+        </div>
+      </form>
     </div>
-    
-        </form>
-    </div>
-</body>
+    <hr class="hr2" />
+    <hr class="hr" />
+    <hr class="hr" />
+    <hr class="hr1" />
+  </body>
 </html>
