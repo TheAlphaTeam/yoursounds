@@ -13,12 +13,135 @@
 
     <%- include('header')%>
 
-    <main>
-        <hr class="hr2">
-        <hr class="hr">
-        <hr class="hr">
-        <hr class="hr1">
-        <section id="addEvents">
+        <main id="eventsPage">
+            <hr class="hr2">
+            <hr class="hr">
+            <hr class="hr">
+            <hr class="hr1">
+
+
+
+
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+            <div class="movie-ticket">
+                <div class="container-fluid">
+                    <div class="ui-item">
+                        <div class="ui-head">
+                            <img src="<%= EventArray[0].img%>" alt="" class="img-responsive bg-img">
+                            <div class="ui-trans clearfix">
+                                <img src="<%= EventArray[0].img%>" alt="" class="img-responsive" style="    margin: 22px;
+              border-radius: 22px;">
+                                <div class="ui-details clearfix">
+
+                                    <h2>
+                                        <%= EventArray[0].name %>
+                                    </h2>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result">
+
+                            <% EventArray.forEach((event,index)=>{ %>
+                                <% if(index %2===0){ %>
+                        </div>
+                        <div class="result">
+                            <div class="ui-review" id="addEvents">
+                                <h3>
+                                    <%=event.title %>
+                                </h3>
+                                <h3>
+                                    <%=event.time %>
+                                </h3>
+                                <p>
+                                    <%=event.location%>
+                                </p>
+                                <p>
+                                    <%=event.offer%>
+                                </p>
+
+                                <p>
+                                    <%=event.venue%>
+                                </p>
+
+                                <p>
+                                    <%=event.description%>
+                                </p>
+
+                                <form action="/addevent/<%=user%>" method="post">
+                                    <input type="hidden" name="user" id="user" value="<%= user%>">
+                                    <input type="hidden" name="index" id="index" value="<%= index%>">
+                                    <input type="hidden" name="image" id="image" value="<%= EventArray[0].img%>">
+                                    <input type="hidden" name="name" id="name" value="<%= EventArray[0].name %>">
+                                    <input type="hidden" name="title" id="title" value="<%=event.title %>">
+                                    <input type="hidden" name="time" id="time" value="<%=event.time %>">
+                                    <input type="hidden" name="location" id="location" value="<%=event.location%>">
+                                    <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+                                    <input type="hidden" name="description" id="description"
+                                        value="<%= event.description%>">
+                                    <input type="hidden" name="venue" id="venue" value="<%=event.venue%>">
+                                    <button class="ui-btn bg-green" id="addEvent" type="submit">
+                                        <h2 id="addeventbutton<%=index%>">&#x271A;</h2>
+                                    </button>
+
+                                </form>
+                            </div>
+                            <% } else{ %>
+                                <div class="ui-review" id="addEvents">
+                                    <h3>
+                                        <%=event.title %>
+                                    </h3>
+                                    <h3>
+                                        <%=event.time %>
+                                    </h3>
+                                    <p>
+                                        <%=event.location%>
+                                    </p>
+                                    <p>
+                                        <%=event.offer%>
+                                    </p>
+
+                                    <p>
+                                        <%=event.venue%>
+                                    </p>
+
+                                    <p>
+                                        <%=event.description%>
+                                    </p>
+
+                                    <form action="/addevent/<%=user%>" method="post">
+                                        <input type="hidden" name="user" id="user" value="<%= user%>">
+                                        <input type="hidden" name="index" id="index" value="<%= index%>">
+                                        <input type="hidden" name="image" id="image" value="<%= EventArray[0].img%>">
+                                        <input type="hidden" name="name" id="name" value="<%= EventArray[0].name %>">
+                                        <input type="hidden" name="title" id="title" value="<%=event.title %>">
+                                        <input type="hidden" name="time" id="time" value="<%=event.time %>">
+                                        <input type="hidden" name="location" id="location" value="<%=event.location%>">
+                                        <input type="hidden" name="offer" id="offer" value="<%=event.offer%>">
+                                        <input type="hidden" name="description" id="description"
+                                            value="<%= event.description%>">
+                                        <input type="hidden" name="venue" id="venue" value="<%=event.venue%>">
+                                        <button class="ui-btn bg-green" id="addEvent" type="submit">
+                                            <h2 id="addeventbutton<%=index%>">&#x271A;</h2>
+                                        </button>
+
+                                    </form>
+                                </div>
+
+                                <% } %>
+
+                                    <% }) %>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+            <!-- <section id="addEvents">
             <img src="<%= EventArray[0].img%>">
             <h2><%= EventArray[0].name %></h2>
             <div class=data>
@@ -50,11 +173,11 @@
                 </div>
                 <% }) %>
             </div>
-        </section>
-    </main>
-    <footer></footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/app.js"></script>
+        </section> -->
+        </main>
+        <%- include('footer')%>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="/js/app.js"></script>
 </body>
 
 </html>
