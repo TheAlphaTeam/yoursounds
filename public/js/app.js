@@ -86,23 +86,26 @@ $('#signup').submit(function (e) {
 
 $('body #addSong').submit(function (e) {
   e.preventDefault();
+  console.log(e.target.user.value)
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
   }, function (data) {
-    $(`#${e.target.id.value}`).html(data);
+    $(`#song${e.target.id.value}`).html(data);
   });
 });
 
 $('body #addSongByArtist').submit(function (e) {
   e.preventDefault();
+  console.log(e.target.user.value)
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
   }, function (data) {
-    $(`#${e.target.id.value}`).html(data);
+    $(`#artist${e.target.id.value}`).html(data);
   });
 });
+
 
 $('body #deleteSong').submit(function (e) {
   e.preventDefault();
@@ -119,14 +122,36 @@ $('body #deleteSong').submit(function (e) {
 });
 
 
+
+
+
+$('body #addEvents').submit(function (e) {
+  e.preventDefault();
+ 
+  $.post(`/addevent/${$('#user').val()}`, {
+ 
+    image:  e.target.image.value, name:e.target.name.value,
+    title: e.target.title.value, time:e.target.time.value,
+    location:e.target.location.value,
+    offer:e.target.offer.value, 
+    description:e.target.description.value, 
+    venue: e.target.venue.value
+  }, function (data) {
+    $(`#addeventbutton${e.target.index.value}`).html(data);
+  });
+});
+
+
 $('body #deleteEvent').submit(function (e) {
   e.preventDefault();
 
   $.post(`/addevent/${$('#user').val()}`, {
 
-    title: e.target.title.value, image:  e.target.image.value,
-    location:e.target.locateion.value, name:e.target.name.value,
-    offer:e.target.offer.value, time:e.target.time.value,
+    image:  e.target.image.value, name:e.target.name.value,
+    title: e.target.title.value, time:e.target.time.value,
+    location:e.target.location.value,
+    offer:e.target.offer.value, 
+    description:e.target.description.value, 
     venue: e.target.venue.value
   }, function (data) {
     $('#addeventbutton').html(data);
@@ -134,4 +159,3 @@ $('body #deleteEvent').submit(function (e) {
     window.location.href = `/myprofile/${$('#user').val()}`;
   });
 });
-

@@ -86,6 +86,7 @@
             <p><%=event.type%></p>
 
             <form id="deleteEvent" action="/addevent/<%=event.username_event%>" method="post">
+            <input type="hidden" name="user" id="user" value="<%= event.username_event%>">
             <input type="hidden" name="image" id="image" value="<%= event.event_image%>">
             <input type="hidden" name="name" id="name" value="<%= event.artist_name %>">
             <input type="hidden" name="title" id="title" value="<%=event.event_title %>">
@@ -105,8 +106,7 @@
 <% } %>
 
 </div>
-       </main>
-
+       </main> 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
         <script src="/js/app.js"></script> 
 
