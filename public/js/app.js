@@ -1,18 +1,6 @@
 'use strict';
 
 
-$(function () {
-  if (window.localStorage.user) {
-    $('#login').hide();
-    $('#signup').hide();
-    // $('#logout').show();
-  } else {
-    $('#login').show();
-    $('#signup').show();
-    // $('#logout').hide();
-  }
-});
-
 $('#list').click(function () {
   $('#resultsEventsList').show();
   $('#resultsSongsList').show();
