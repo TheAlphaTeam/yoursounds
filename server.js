@@ -45,7 +45,7 @@ function profileHandler(req, res) {
   let saveValue = [currentUsername];
   client.query(SQL, saveValue)
     .then((userData) => {
-      res.render('pages/myplaylist', { input: userData.rows });
+      res.render('pages/myplaylist', { input: userData.rows, user:userData.rows[0].username});
     }).catch(() => {
       res.redirect('pages/Erorr');
 
@@ -182,7 +182,6 @@ function TEST(req, res) {
 server.get('/search/:username', searchHandler);
 function searchHandler(req, res) {
   let usrename = req.params.username;
-  console.log(usrename);
   let SQL = `Select * from persons where  username=$1;`;
   let safeValues = [usrename];
   client.query(SQL, safeValues)
@@ -210,10 +209,6 @@ function showFormHandler(req, res) {
           return new Artist(item);
         }));
         res.render('pages/showartist', { songs: dataConstructors, user: username })
-          .catch(() => {
-            res.render('pages/Erorr');
-
-          });
       }));//Artist page
   } else if (req.body.name === 'song') {
     fetch(`https://itunes.apple.com/search?attribute=songTerm&entity=song&term=${term}`)
@@ -245,11 +240,7 @@ function Artist(artistData) {
 
 
 //------------------niveen Event page (fuction with construct)--------------------//
-//Routes
-// request url (browser): localhost:3000/events----/show
-// server.get('/events', (req, res) => {
-//   res.render('pages/events');
-// });
+
 server.post('/searchforevents/:username', eventHandler);
 
 

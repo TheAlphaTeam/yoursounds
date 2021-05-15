@@ -4,19 +4,19 @@
   <div id="ulnavbar">
 
 
-    <form action="/myprofile/username" method="GET" >
-      <button type="submit" class="buttonnavBarstyle">MyProfile</button>
-    </form>
-    <form action="/search/username" method="GET" >
-      <button type="submit" class="buttonnavBarstyle">Search</button>
-    </form>
-    
-    <form action="/uboutUs" method="GET" >
-      <button type="submit" class="buttonnavBarstyle">Our Team</button>a
-    </form>
-    <form action="/login" method="POST" id="logout">
-      <button type="submit" class="buttonnavBarstyle">LogOut</button>
-    </form>
+      <form action="/myprofile/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">MyProfile</button>
+      </form>
+      <form action="/search/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">Search</button>
+      </form>
+
+      <form action="/uboutUs" method="GET">
+          <button type="submit" class="buttonnavBarstyle">Our Team</button>a
+      </form>
+      <form action="/login" method="POST" id="logout">
+          <button type="submit" class="buttonnavBarstyle">LogOut</button>
+      </form>
 
   </div>
 
