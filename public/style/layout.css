@@ -71,7 +71,7 @@
 		padding: 10px;
 		display: flexbox;
 		text-align: center;
-		background-image: url(../images/dancemotion.gif);
+		background-image: url(https://drive.google.com/file/d/1Gc8vyBjRJSdeOwXeZv5lg7BNgQfT9tfp/view?usp=sharing);
 	  }
 	  
 	  #avatar{
@@ -383,7 +383,7 @@
 	  
 	  }
 	  #addeventbutton{
-		border-radius: 50%;
+		border-radius: 10%;
 		width: 30px;
 		height: 30px;
 	  }
@@ -474,7 +474,7 @@
 	padding: 10px;
 	display: flexbox;
 	text-align: center;
-	background-image: url(../images/dancemotion.gif);
+	background-image: url(https://drive.google.com/file/d/1Gc8vyBjRJSdeOwXeZv5lg7BNgQfT9tfp/view?usp=sharing);
   }
   
   #avatar{
