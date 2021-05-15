@@ -86,7 +86,7 @@ $('#signup').submit(function (e) {
 
 $('body #addSong').submit(function (e) {
   e.preventDefault();
-  console.log(e.target.user.value)
+  console.log(e.target.user.value);
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
@@ -97,7 +97,7 @@ $('body #addSong').submit(function (e) {
 
 $('body #addSongByArtist').submit(function (e) {
   e.preventDefault();
-  console.log(e.target.user.value)
+  console.log(e.target.user.value);
   $.post(`/addsong/${e.target.user.value}`, {
     title: e.target.title.value, preview: e.target.preview.value,
     image: e.target.image.value, name: e.target.name.value
@@ -127,14 +127,14 @@ $('body #deleteSong').submit(function (e) {
 
 $('body #addEvents').submit(function (e) {
   e.preventDefault();
- 
+
   $.post(`/addevent/${$('#user').val()}`, {
- 
+
     image:  e.target.image.value, name:e.target.name.value,
     title: e.target.title.value, time:e.target.time.value,
     location:e.target.location.value,
-    offer:e.target.offer.value, 
-    description:e.target.description.value, 
+    offer:e.target.offer.value,
+    description:e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $(`#addeventbutton${e.target.index.value}`).html(data);
@@ -150,8 +150,8 @@ $('body #deleteEvent').submit(function (e) {
     image:  e.target.image.value, name:e.target.name.value,
     title: e.target.title.value, time:e.target.time.value,
     location:e.target.location.value,
-    offer:e.target.offer.value, 
-    description:e.target.description.value, 
+    offer:e.target.offer.value,
+    description:e.target.description.value,
     venue: e.target.venue.value
   }, function (data) {
     $('#addeventbutton').html(data);
@@ -160,3 +160,20 @@ $('body #deleteEvent').submit(function (e) {
   });
 });
 
+
+
+$('#loginBtn').show();
+$('#updateSingUp').hide();
+$('#signupBtn').on('click',function(){
+  $('#signupBtn').css( 'margin-top','180px');
+  $('#loginBtn').toggle();
+  $('#updateSingUp').toggle();
+});
+
+$('#signupBtn').show();
+$('#updateLogin').hide();
+$('#loginBtn').on('click',function(){
+  $('#loginBtn').css( 'margin-top','180px');
+  $('#signupBtn').toggle();
+  $('#updateLogin').toggle();
+});
