@@ -5,19 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <title>YOURSOUNDES</title>
 </head>
 
 <body>
-    <header>
-        <form action="/login" method="POST" id="logout">
-            <input type="submit" value="LogOut">
-        </form>
-        <form action="/search/<%=input[0].username %>">
-            <input type="submit" value="search">
-        </form>
-    </header>
+    
+    <%- include('header')%>
 
     <main>
         <div id="myPlayListMain">

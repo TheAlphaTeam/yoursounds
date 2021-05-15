@@ -5,11 +5,11 @@ $(function () {
   if (window.localStorage.user) {
     $('#login').hide();
     $('#signup').hide();
-    $('#logout').show();
+    // $('#logout').show();
   } else {
     $('#login').show();
     $('#signup').show();
-    $('#logout').hide();
+    // $('#logout').hide();
   }
 });
 
@@ -170,3 +170,19 @@ $('#updateBtn').on('click', function () {
 });
 
 
+
+$('#loginBtn').show();
+$('#updateSingUp').hide();
+$('#signupBtn').on('click',function(){
+  $('#signupBtn').css( 'margin-top','180px');
+  $('#loginBtn').toggle();
+  $('#updateSingUp').toggle();
+});
+
+$('#signupBtn').show();
+$('#updateLogin').hide();
+$('#loginBtn').on('click',function(){
+  $('#loginBtn').css( 'margin-top','180px');
+  $('#signupBtn').toggle();
+  $('#updateLogin').toggle();
+});
