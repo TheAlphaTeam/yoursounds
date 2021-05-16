@@ -12,9 +12,55 @@
   margin-left: 2%;
       width:240px;
       height: 70px;
-    
     }
-
+body{
+  background-color: whitesmoke;
+}
+.close {
+  
+  transform: scale(1.5);
+  -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(255, 98, 74, .5);
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .8;
+    margin-top: 18px;
+    margin-right: -20px;
+    
+  }
+  .close:hover{
+    font-weight: 900;
+    color: #fff;
+}
+.close1 {
+  position: relative;
+    left: 145px;
+    top: 6px;
+  transform: scale(1.5);
+  -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(255, 98, 74, .5);
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+  }
+  .close1:hover{
+    font-weight: 900;
+    color: rgb(19, 18, 18);
+  }
 @media only screen and (min-width:350px) and (max-width: 768px) {
 
 
@@ -23,11 +69,9 @@
 
 
 @media only screen and (min-width:768px) {
-  body{
-    background-image: url(https://s3.img-b./image/private/t_base,c_pad,f_auto,dpr_2,w_480,h_480/product/shaw/shaw-cs37p-00100-9459802.jpg);
-  }
   
   
+
   header {
     background-color: rgb(10, 3, 3);
     height: 10%;
@@ -74,6 +118,8 @@
     
     width:100%;
     height: 750px;
+    display: grid;
+    grid-template-rows: 100px, 650px;
   }
   
   .bg-cover {
@@ -81,6 +127,12 @@
   } 
   .nav1 {
     display:inline ;
+    grid-row: 1/2;
+  }
+  #fooooorms{
+    grid-row: 2/3;
+    text-align: center;
+    height: 450px;
   }
   .logo {
     float: left;
@@ -123,30 +175,37 @@
       font-size: 20px;
   }
   
-  
+  #signupBtn{
+    background: black;
+    border: solid 1px black;
+  }
+  #loginBtn{
+    background: #ff614a;
+    border: solid 1px #ff614a;
+  }
   #signupBtn ,#loginBtn {
     padding: 5px;
     color: white;
     font-weight: 500;
     font-size: 25px;
     transition: all 0.3s ease-in-out;
-    background: var(--button);
-    border: solid 1px white;
-    border: double;
-    border-radius: 22px;
+    border-radius: 5px;
     width: 250px;
     box-shadow: inset 0 0 0 2px var(--colour-white);
     margin-right: 1em;
     font-family: 'Gloria Hallelujah', cursive;
+    margin-top: 118px;
   }
   
   .inputHome :hover , #loginBtn:hover  {
-    background: #ff614a;
-    box-shadow: inset 0 0 0 4px var(--colour-white);
+    
+    cursor: pointer;
+
   }
   #signupBtn:hover
   {
-    background: black;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 4px var(--colour-white);
   }
   
   .inputHome:active {
@@ -159,16 +218,12 @@
  
   #signupBtn{
   text-transform: uppercase;
-   margin-top: 40px;
    letter-spacing: 1.9px; 
   
   }
   #loginBtn{
     text-transform: uppercase;
     letter-spacing: 1.9px; 
-     margin-top:-50px;
-     margin-left: 30px;
-     /* margin-left:1%; */
   }
   
   .album{
@@ -206,9 +261,9 @@
   }
   
   .api{
-    margin:60px;
-    width: 22%;
-    height: 300px;
+    margin:50px;
+    width: 25%;
+    height: 330px;
     padding: 10px;
     display: inline-block;
     text-align: center;
@@ -223,14 +278,10 @@
       display: inline-block;
       overflow:  hidden;
       text-align: center;  
-      
-  
   }
   .audio1{
-    padding: 10px;
-    margin-top: 15px;
-    margin-left: -10px;
-  
+    padding: 12px;
+    
   }
   span{
     

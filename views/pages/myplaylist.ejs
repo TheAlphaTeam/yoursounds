@@ -3,7 +3,7 @@
 
     <%- include('head')%>
 
-<body>
+ <body>
     
     <%- include('header')%>
 
@@ -49,50 +49,45 @@
             <div id="resultContainer">
                 <div class="buttonsconatiner">
                     <a href="#resultContainer"><input class="buttonlits" type="button" value="Lists" id='list'></a>
-                    <a href="#resultContainer"><input class="buttonlits" type="button" value="Songs List"
-                            id='songslist'></a>
-                    <a href="#resultContainer"><input class="buttonlits" type="button" value="Events List"
-                            id='eventslist'></a>
+                    <a href="#resultContainer"><input class="buttonlits" type="button" value="Songs List" id='songslist'></a>
+                    <a href="#resultContainer"><input class="buttonlits" type="button" value="Events List" id='eventslist'></a>
                 </div>
                 <hr class="hr1">
                 <hr class="hr">
                 <hr class="hr">
                 <hr class="hr2">
                 <br>
-                <div id="resultsSongsList">
+                <div>
                     <h2 class="listTitle">Your Tracks</h2>
                     <% if(input[0].songtitle==null){ %>
                     <h2 class="listStatus">There's no Tracks added</h2>
                     <% } else{ %>
-                    <section>
+                    <section class="resultsSongsList">
                         <% input.forEach(song=>{%>
-                        <div>
-                            <audio controls>
-                                <source src="<%=song.cover_preview%>" type="audio/mpeg">
-                            </audio><br>
-                            <img src="<%=song.image_url%>"><br>
-                            <h3><%=song.songtitle%></h3><br>
-                            <h2><%= song.artistname%></h2><br>
-
+                        <div class="card">
                             <form id="deleteSong" action="/addsong/<%=input[0].username%>" method="post">
                                 <input type="hidden" name="user" id="user" value="<%=input[0].username%>">
                                 <input type="hidden" name="title" id="title" value="<%=song.songtitle%>">
                                 <input type="hidden" name="preview" id="preview" value="<%=song.cover_preview%>">
                                 <input type="hidden" name="image" id="image" value="<%=song.image_url%>">
                                 <input type="hidden" name="name" id="name" value="<%= song.artistname%>">
-                                <button type="submit" style="width: 50px;">
-                                    <h2 id="myButton1">&#10006;</h2>
-                                </button>
+                                <button id="myButton1" type="submit" data-dismiss="modal" class="close1"><i class="fa fa-trash" aria-hidden="true" style="font-size:15px"></i></button>
                             </form>
+                            <img class="imgSong" src="<%=song.image_url%>"><br>
+                            <h3 class="title2"><%=song.songtitle%></h3><br>
+                            <h2 class="title1"><%= song.artistname%></h2><br>
+                            <audio controls><source src="<%=song.cover_preview%>" type="audio/mpeg"></audio><br>
+
+                            
                         </div>
                         <%})%>
                     </section>
                     <% } %>
-                    <hr class="hr1 sectionhr">
+                </div>
+                <hr class="hr1 sectionhr">
                     <hr class="hr sectionhr">
                     <hr class="hr sectionhr">
                     <hr class="hr2 sectionhr" id="hrmargin">
-                </div>
 
                 <div id="resultsEventsList">
                     <h2 class="listTitle">Your Events</h2>
@@ -100,18 +95,9 @@
                     <% if(input[0].event_time === null){ %>
                     <h2 class="listStatus">There's no Events added </h2>
                     <% } else{ %>
-                    <div class=eventData>
+                    <div class="eventData ">
                         <%  input.forEach(event=>{ %>
-                        <div class="eventsCard">
-                            <img id="eventsCardimg" src="<%= event.event_image%>">
-                            <h2><%= event.artist_name %></h2>
-                            <h3><%=event.event_title %></h3>
-                            <h3><%=event.event_time %></h3>
-                            <p><%=event.location%></p>
-                            <p><%=event.offer%></p>
-                            <!-- <p><%=event.description%></p> -->
-                            <p><%=event.type%></p>
-
+                        <div class="card">
                             <form id="deleteEvent" action="/addevent/<%=event.username_event%>" method="post">
                                 <input type="hidden" name="user" id="user" value="<%= event.username_event%>">
                                 <input type="hidden" name="image" id="image" value="<%= event.event_image%>">
@@ -123,10 +109,16 @@
                                 <input type="hidden" name="description" id="description"
                                     value="<%= event.description%>">
                                 <input type="hidden" name="venue" id="venue" value="<%=event.ytpe%>">
-                                <button id="addEvent" type="submit"><img id="addeventbutton"
-                                        src="/images/remove.png"></button>
-
+                                <button id="addEvent" type="submit" data-dismiss="modal" class="close1"><i class="fa fa-trash" aria-hidden="true" style="font-size:15px"></i></button>
                             </form>
+                            <img id="eventsCardimg" src="<%= event.event_image%>">
+                            <h2 class="title2"><%= event.artist_name %></h2>
+                            <h3 class="title1"><%=event.event_title %></h3>
+                            <h3 class="title1"><%=event.event_time %></h3>
+                            <p><%=event.location%></p>
+                            <p><%=event.offer%></p>
+                            <!-- <p><%=event.description%></p> -->
+                            <p><%=event.type%></p>
                         </div>
                         <% }); %>
 

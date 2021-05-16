@@ -159,20 +159,46 @@ $('#updateBtn').on('click', function () {
 
 
 $('#loginBtn').show();
+$('#signupBtn').show();
 $('#updateSingUp').hide();
-$('#signupBtn').on('click',function(){
-  $('#signupBtn').css( 'margin-top','180px');
+$('#updateLogin').hide();
+
+$('#signupBtn').on('click', function () {
   $('#loginBtn').toggle();
   $('#updateSingUp').toggle();
+  $('#signupBtn').hide();
 });
 
-$('#signupBtn').show();
-$('#updateLogin').hide();
-$('#loginBtn').on('click',function(){
-  $('#loginBtn').css( 'margin-top','180px');
+$('#loginBtn').on('click', function () {
   $('#signupBtn').toggle();
   $('#updateLogin').toggle();
+  $('#loginBtn').hide();
 });
+
+
+$('#Alreadyhaveaccount').on('click', function () {
+  $('#signupBtn').hide();
+  $('#updateSingUp').toggle();
+  $('#updateLogin').toggle();
+  $('#loginBtn').hide();
+});
+
+$('#Nothaveaccount').on('click', function () {
+  $('#loginBtn').hide();
+  $('#updateSingUp').toggle();
+  $('#updateLogin').toggle();
+  $('#signupBtn').hide();
+});
+
+
+$('.close').on('click', function () {
+  $('#loginBtn').show();
+  $('#updateSingUp').hide();
+  $('#updateLogin').hide();
+  $('#signupBtn').show();
+});
+
+
 
 $('#eventForm').hide();
 $('#TrackBtn').click(function () {
@@ -182,4 +208,21 @@ $('#TrackBtn').click(function () {
 $('#eventBtn').click(function () {
   $('#eventForm').show();
   $('#songForm').hide();
+});
+
+
+$('#list').click(function () {
+  $('#list').css('background', '#FF614A');
+  $('#eventslist').css('background', 'var(--button)');
+  $('#songslist').css('background', 'var(--button)');
+});
+$('#eventslist').click(function () {
+  $('#eventslist').css('background', '#FF614A');
+  $('#list').css('background', 'var(--button)');
+  $('#songslist').css('background', 'var(--button)');
+});
+$('#songslist').click(function () {
+  $('#songslist').css('background', '#FF614A');
+  $('#eventslist').css('background', 'var(--button)');
+  $('#list').css('background', 'var(--button)');
 });
