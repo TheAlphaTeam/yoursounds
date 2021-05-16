@@ -290,6 +290,15 @@ function Songs(songData) {
 }
 /////////////////////////////////////////////////end search page////////////////////////////////////////////////////
 
+server.get('/aboutus', (req, res) => {
+  res.render('pages/aboutushome');
+});
+
+server.get('/aboutus/:username', (req, res) => {
+  let username = req.params.username;
+  res.render('pages/aboutus',{user: username});
+});
+
 server.get('*', (req, res) => {
   res.render('pages/Erorr');
 });
