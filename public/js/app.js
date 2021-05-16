@@ -174,3 +174,13 @@ $('#loginBtn').on('click',function(){
   $('#signupBtn').toggle();
   $('#updateLogin').toggle();
 });
+
+$('#eventForm').hide();
+$('#TrackBtn').click(function () {
+  $('#eventForm').hide();
+  $('#songForm').show();
+});
+$('#eventBtn').click(function () {
+  $('#eventForm').show();
+  $('#songForm').hide();
+});

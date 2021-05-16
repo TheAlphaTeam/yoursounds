@@ -2,54 +2,65 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .searchForm {
-    display: flex;
-    flex-direction: column;
+	#searchFormss{
+	display: flex;
+    flex-direction:row;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    /* background-image: url("../image/Person\ Playing\ A\ Guitar.gif"); */
+	}
+  .searchForm {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+	opacity:0.5px;
     width: 100%;
-    height: 700px;
-    font-weight: bold;
-    border: #ff614a 2px solid;
-    border-radius: 2px;
+    height:600px;
+
   }
 
-  .one,
-  .two {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    height: 40px;
-    line-height: 20px;
-    font-size: 20px;
-    color: #fafafa;
+  .one
+   {
+	color: white;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    background: var(--button);
+    border: solid 1px white;
+	border-radius: 20px;
+	height:40px;
+    width:40%;
+    box-shadow: inset 0 0 0 2px var(--colour-white);
+    margin-right: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
   }
+  .two
+  {
+  padding: 10px;
+   color: white;
+   font-weight: 500;
+   font-size: 15px;
+   display: flex;
+   flex-direction: row;
+ }
 
   .btn-song {
-    width: 20%;
-    height: 45px;
-    color: rgb(255, 255, 255);
-    padding: 5px;
-    background-color: #636eca;
-    cursor: pointer;
-    box-shadow: 0 4px #888d8d;
-    font-size: 16px;
-    cursor: pointers;
-    border-radius: 10px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
-  }
-  .btn-song:hover {
-    background-color: #ee3030;
+	
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    background: var(--button);
+    border: solid 1px white;
+    border: double;
+    border-radius: 22px;
+	height:40px;
+    width:20%;
+    box-shadow: inset 0 0 0 2px var(--colour-white);
+    margin-right: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
   }
 
-  .btn-song:active {
-    background-color: #dfe2df;
-    box-shadow: 0 2px rgb(216, 0, 0);
-    transform: translateY(4px);
-  }
   .btn-event:hover {
     background-color: #ee3030;
   }
@@ -60,51 +71,77 @@
     transform: translateY(4px);
   }
 
-  .event-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background-image: url("../image/eventcover.jpeg");
-    width: 100%;
-    height: 700px;
+  .event-form  input {
+	color: rgb(15, 15, 15);
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    background: var(--button);
+    border: solid 1px rgb(250, 249, 249);
+	border-radius: 20px;
+	height:40px;
+    width:300px;
+    box-shadow: inset 0 0 0 2px var(--colour-white);
+    margin-right: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
   }
+  #eventBtn ,#TrackBtn{
+
+	padding: 5px;
+    color: white;
+    font-weight: 500;
+    font-size: 25px;
+    transition: all 0.3s ease-in-out;
+    background: var(--button);
+    border: solid 1px white;
+    border: double;
+    border-radius: 22px;
+    width: 250px;
+    box-shadow: inset 0 0 0 2px var(--colour-white);
+    margin-right: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
+  }
+
+  #TrackBtn:hover  {
+    background: #ff614a;
+    box-shadow: inset 0 0 0 4px var(--colour-white);
+  }
+  #eventBtn:hover
+  {
+    background: black;
+  }
+  #TrackBtn{
+	text-transform: uppercase;
+	 margin-top: 60px;
+	 letter-spacing: 1.9px; 
+	 margin-left: 400px;
+	
+	}
+	#eventBtn{
+	  text-transform: uppercase;
+	  letter-spacing: 1.9px; 
+	   margin-top:-50px;
+	   margin-left: 30px;
+	}
+
 
   .btn-event {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
-    height: 40px;
-    line-height: 20px;
-    font-size: 20px;
-    color: rgb(255, 255, 255);
-    background-color: #636eca;
-    font-weight: bold;
-    width: 100%;
-    box-shadow: 0 4px #888d8d;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-      sans-serif;
+	color: white;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+    background: var(--button);
+    border: solid 1px white;
+    border: double;
+    border-radius: 22px;
+	height:40px;
+    width:200px;
+    box-shadow: inset 0 0 0 2px var(--colour-white);
+    margin-right: 1em;
+    font-family: 'Gloria Hallelujah', cursive;
   }
 
-  .event-search {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    height: 40px;
-    line-height: 20px;
-    font-size: 20px;
-    color: #fafafa;
-    width: 100%;
-  }
-
-  .Music-Events {
-    color: #ffffff;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    font-size: 35px;
-  }
+ 
 }
 
 
