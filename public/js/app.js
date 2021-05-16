@@ -41,8 +41,7 @@ $('#login').submit(function (e) {
 
 
 
-$('#logout').submit(function (e) {
-
+$('.logout').submit(function (e) {
   e.preventDefault();
   window.localStorage.removeItem('user');
   window.location.href = '/';

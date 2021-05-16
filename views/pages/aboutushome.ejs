@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,152 +8,39 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/style.css">
 
 </head>
 
-<style>
-    h3 {
-        color: white;
-        font-family: Regular 400 italic;
-        font-size: larger;
-    }
-
-    body {
-        background-color: rgb(41, 37, 41);
-    }
-
-    main {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    #card {
-        width: 30%;
-
-    }
-
-    header {
-        height: auto;
-        width: 100%;
-    }
-
-    #content {
-        text-align: center;
-        font-size: larger;
-        color: white;
-        margin-bottom: 100px;
-    }
-
-
-
-    img {
-        height: 250px;
-        border-radius: 50%;
-        border: 1px solid #ddd;
-
-    }
-
-    img:hover {
-        box-shadow: 0 0 5px 10px rgba(247, 91, 19, 0.5);
-    }
-
-    p {
-        font-size: large;
-        font-family: Regular 400;
-        background-color: rgb(41, 37, 41);
-        width: 300px;
-        color: white;
-    }
-
-
-    p:hover {
-        color: #ff614a;
-    }
-
-    @media (min-width: 769px) and (max-width: 959px) {
-
-        #card {
-            width: 40%;
-
-
-        }
-
-
-    }
-
-
-    @media (max-width: 767px) {
-
-        #card {
-            width: 60%;
-
-
-        }
-
-        header {
-            height: 400px;
-        }
-    }
-
-
-
-
-
-
-    h1 {
-        margin-top: 100px;
-        margin-left: -1000px;
-    }
-
-    h2 {
-        margin-left: -220px;
-    }
-
-    .logo {
-        float: left;
-        display: block;
-        width: 300px;
-        height: 100px;
-        margin-left: 10px;
-        margin-top: 12px;
-
-    }
-
-    .homeref {
-        margin-left: 860px;
-        font-size: 25px;
-        font-weight: bold;
-        line-height: 0px;
-        text-decoration: none;
-        font-family: 'Abel', sans-serif;
-        color: #ff614a;
-        margin-top: 700px;
-
-    }
-
-    a:hover {
-        color: #050505;
-    }
-</style>
-
 <body>
+    <header>
 
-
-
-    <%- include('pages/header')%>
-
-        <div id="content">
-            <h1>Meet our team</h1>
-            <h2>ALPHA team is a team consists of six briliant web developers from ASAC bootcamp</h2>
-
+        <img class="logo1" src="/images/logoWhite.png" alt="">
+        <div id="ulnavbar">
+      
+    
+            <form  action="/" method="GET">
+                <button type="submit" class="buttonnavBarstyle">SignIn/signUp</button>
+            </form>
+            <form  action="/aboutus" method="GET">
+                <button type="submit" class="buttonnavBarstyle">About Us</button>
+            </form>
+           
+      
         </div>
-
-
+      </header>
+        
         <main id="main">
-
+            <hr class="hr2 ">
+            <hr class="hr">
+            <hr class="hr">
+            <hr class="hr1">
+            
+            <div id="content">
+                <h1>Meet our team</h1>
+                <h2>ALPHA team is a team consists of six briliant web developers from ASAC bootcamp</h2>
+    
+            </div>
             <section id="card">
 
                 <div id="member">
@@ -234,16 +120,14 @@
                 </div>
 
             </section>
-
-
-
-
-
+            <hr class="hr2 margintop">
+            <hr class="hr">
+            <hr class="hr">
+            <hr class="hr1">
         </main>
-
-        <%- include('footer')%>
-
-
+        <%- include('footerhome')%>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
