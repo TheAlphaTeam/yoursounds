@@ -8,7 +8,12 @@
   padding: 0px;
     
 }
-
+.logo1 {
+  margin-left: 2%;
+      width:240px;
+      height: 70px;
+    
+    }
 
 @media only screen and (min-width:350px) and (max-width: 768px) {
 
@@ -19,7 +24,7 @@
 
 @media only screen and (min-width:768px) {
   body{
-    background-image: url(https://s3.img-b.com/image/private/t_base,c_pad,f_auto,dpr_2,w_480,h_480/product/shaw/shaw-cs37p-00100-9459802.jpg);
+    background-image: url(https://s3.img-b./image/private/t_base,c_pad,f_auto,dpr_2,w_480,h_480/product/shaw/shaw-cs37p-00100-9459802.jpg);
   }
   
   
@@ -151,9 +156,7 @@
   .inputHome :visited {
     background: var(--button-visited);
   }
-  
-  
-  
+ 
   #signupBtn{
   text-transform: uppercase;
    margin-top: 40px;
@@ -182,7 +185,7 @@
   }
   .album p{
     letter-spacing: 2px;
-    color: white;
+    color: rgb(73, 44, 44);
     padding: 20px;
     text-align: center;
     font-size: 30px;
@@ -193,7 +196,7 @@
   .album h2{
     font-family: 'Abel', sans-serif;
     letter-spacing: 5px;
-    color: white;
+    color: rgb(56, 42, 42);
     padding: 45px;
     text-align: center;
     font-size: 45px;

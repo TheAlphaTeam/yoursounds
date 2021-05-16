@@ -499,8 +499,7 @@
     flex-flow: row wrap;
     padding: 50px;
     color: #fff;
-    background-color:white;
-    border: solid indigo;
+    background-color:rgb(10, 3, 3);
     }
     
     .footer > * {
@@ -517,6 +516,12 @@
     font-size: 15px;
     }
     
+	.logo1 {
+		margin-left: 2%;
+		width:240px;
+		height: 70px;
+		  
+	}
     .footer ul {
     list-style: none;
     padding-left: 0;
@@ -541,6 +546,7 @@
     }
     
     .box a {
+	font-family: 'Abel';
     color: #999;
     }
     
@@ -550,14 +556,18 @@
     }
     
     .b-footer {
+	font-family: 'Abel';
     text-align: center;
     color: #999;
     }
     
     .l-footer p {
-    padding-right: 20%;
-    color: #999;
-    }   
+	padding-right: 20%;
+	color: #fff;
+	font-size: medium;
+	font-family: 'Abel';
+	margin-top: 10px;
+	}   
     
     .r-footer > * {
     flex: 2;
@@ -1083,8 +1093,7 @@ display: flex;
 flex-flow: row wrap;
 padding: 50px;
 color: #fff;
-background-color:white;
-border: solid indigo;
+background-color:rgb(10, 3, 3);
 }
 
 .footer > * {
@@ -1095,7 +1104,12 @@ flex:  1 100%;
 margin-right: 1.25em;
 margin-bottom: 2em;
 }
-
+.logo2 {
+margin-left: 2%;
+width:290px;
+height: 90px;
+	  
+}
 h2 {
 font-weight: 400px;
 font-size: 15px;
@@ -1112,6 +1126,7 @@ line-height: 2em;
 
 .footer a {
 text-decoration: none;
+font-size: medium;
 }
 
 .r-footer {
@@ -1123,8 +1138,11 @@ flex-flow: row wrap;
 flex: 1 50%;
 margin-right: 1.25em;
 }
-
+.box22{
+	text-align: center;
+}
 .box a {
+font-family: 'Abel';
 color: #999;
 }
 
@@ -1134,14 +1152,19 @@ column-gap: 1.25em;
 }
 
 .b-footer {
+font-family: 'Abel';
 text-align: center;
 color: #999;
 }
 
 .l-footer p {
 padding-right: 20%;
-color: #999;
-}   
+color: #fff;
+font-size: medium;
+font-family: 'Abel';
+margin-top: 10px;
+}
+   
 
 .r-footer > * {
 flex: 2;
@@ -1158,4 +1181,7 @@ flex: 1 0px;
 .r-footer {
 flex: 2 0px;
 }
+}
+.margintop{
+	margin-top: 30px;
 }
