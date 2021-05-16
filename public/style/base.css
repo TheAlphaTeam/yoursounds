@@ -156,27 +156,7 @@
   .inputHome :visited {
     background: var(--button-visited);
   }
-  
-  
-  
-  /* h2{
-   
-    font-size: 20px;
-    color: black;
-    font-weight: bolder;
-    letter-spacing: 1.8px; 
-    font-family: 'Satisfy', cursive;
-   
-    
-  }
-  h3{
-   
-    font-size: 18px;
-    color:black;
-    font-weight: bolder;
-    letter-spacing: 2px; 
-    font-family: 'Satisfy', cursive;
-  } */
+ 
   #signupBtn{
   text-transform: uppercase;
    margin-top: 40px;

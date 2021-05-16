@@ -18,29 +18,36 @@
       <hr class="hr" />
       <hr class="hr" />
       <hr class="hr1" />
-      <div id="searchforSong">
-        <form action="/search/<%=user%>" method="POST" class="searchForm">
+
+      <div style="background: url(../images/b2.jpg)">
+
+      <button id='TrackBtn'>Tracks </button>
+      <button id='eventBtn'>Events </button>
+
+      <div id ="searchFormss">
+        <form action="/search/<%=user%>" method="POST" class="searchForm" id="songForm">
+        
           <input
             type="text"
             name="songs"
             required
-            placeholder="search"
+            placeholder="type to search ...."
             class="one"
           />
-
+          
           <div class="two">
-            <label for="">Artist Name</label>
-            <input type="radio" name="name" value="artist" checked />
+            <label for="" class ="label1">Artist Name</label>
+            <input type="radio" name="name" value="artist"  class ="radio-btn" checked />
           </div>
           <div class="two">
-            <label for="">Song Name</label>
-            <input type="radio" name="name" value="song" />
+            <label for=""class ="label1">Song Name</label>
+            <input type="radio" name="name" value="song" class ="radio-btn" />
           </div>
-
-          <button class="btn-song">Search for songs 🔎</button>
+          <button class="btn-song">Search for songs </button>
         </form>
+        <div id="eventForm"><%- include('events')%></div>
       </div>
-      <div id="searchForEvent"><%- include('events')%></div>
+      </div>
     </main>
     <%- include('footer')%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
