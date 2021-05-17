@@ -43,21 +43,6 @@ server.post('/addevent/:username', addeventHandler);
 
 
 function profileHandler(req, res) {
-  // let currentUsername = req.params.username;
-  // let SQL = `SELECT * FROM persons  LEFT JOIN userevents
-  // ON persons.username = userevents.username_event
-  // LEFT JOIN usersongs
-  // ON persons.username = usersongs.username_songs where persons.username=$1;`;
-  // let saveValue = [currentUsername];
-  // client.query(SQL, saveValue)
-  //   .then((userData) => {
-  //    // res.render('pages/myplaylist', { input: userData.rows, user:userData.rows[0].username});
-  //     res.send(userData.rows);
-  //   }).catch(() => {
-  //     res.redirect('pages/Erorr');
-
-  //   });
-
   let currentUsername = req.params.username;
   let SQL = `SELECT * FROM persons  LEFT JOIN userevents
   ON persons.username = userevents.username_event where persons.username=$1;`;
@@ -159,7 +144,7 @@ function homePage(req, res) {
 }
 
 function singUp(req, res) {
-  let { name, email, password } = req.body;
+  let { name, email, password} = req.body;
   let uname = name.replace(/\s+/g, '');
   // checking user existing
   let SQL = `Select * from persons where username=$1 or email=$2;`;
@@ -168,8 +153,8 @@ function singUp(req, res) {
     .then(result => {
       if (result.rows.length === 0) {
         //insert new user
-        let SQL2 = `INSERT INTO persons (username, email, password) VALUES ($1,$2,$3) RETURNING *;`;
-        let safeValues2 = [uname, email, password];
+        let SQL2 = `INSERT INTO persons (username, email, password, profile_image) VALUES ($1,$2,$3,$4) RETURNING *;`;
+        let safeValues2 = [uname, email, password, 'https://st.depositphotos.com/2101611/3925/v/600/depositphotos_39258143-stock-illustration-businessman-avatar-profile-picture.jpg'];
         client.query(SQL2, safeValues2)
           .then(result => {
             res.send(JSON.stringify({ username: result.rows[0].username, id: result.rows[0].id }));
@@ -296,7 +281,7 @@ function Events(Data) {
   this.img = event_img;
   this.name = Data.lineup;
   this.title = Data.venue.name;
-  this.offer = ' Tickit status: ' + Data.offers[0].status;
+  this.offer = ' Tickets status: ' + Data.offers[0].status;
   this.time = Data.datetime.replace(/T1+/g, ' ').slice(0, 15) + 'pm';
   this.description = Data.description;
   this.venue = (Data.venue.type) ? `will be ${Data.venue.type}event` : ` location : ${Data.venue.city} - ${Data.venue.country}`;

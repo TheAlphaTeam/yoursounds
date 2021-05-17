@@ -52,13 +52,17 @@
 }
   .two
   {
-  padding: 10px;
+   width: 15%;
+   padding: 10px;
    color: white;
    font-weight: 500;
    font-size: 15px;
    display: flex;
-   flex-direction: row;
- }
+   flex-flow: row wrap;
+   justify-content: space-evenly;
+   align-items: center;
+    
+}
 
   .btn-song {
 	
@@ -70,10 +74,11 @@
     border-radius: 5px;
 	height:40px;
     width:15%;
-   
-  
+	cursor: pointer;
   }
-
+  .btn-song:hover{
+	  background: #ff614a;
+  }
   .event-form  input {
 	color: rgb(255, 255, 255);
     font-weight: 500;
@@ -94,6 +99,7 @@
     width: 250px;
     margin-right: 1em;
     font-family: 'Gloria Hallelujah', cursive;
+	cursor: pointer;
   }
 
   #TrackBtn {
@@ -140,19 +146,22 @@
     width:150px;
 	margin-left: 180px;
 	border-radius: 5px;
+	cursor: pointer;
   }
-
+  .btn-event:hover{
+	  background: #ff614a;
+  }
 
 }
 .label1{
 	font-size: 20px;
-	margin-left: 20px;
+	
 }
 
 
 input[type='radio']:after {
     width: 15px;
-    height: 1.1em;
+    height: 14px;
 	border-radius: 15px;
 	position:relative;
 	top:0px;
@@ -163,20 +172,23 @@ input[type='radio']:after {
 	visibility: visible;
 	border: 1px solid white;
 
+	
 }
 
 input[type='radio']:checked:after {
-    width: 15px;
-    height: 1.1em;
+	width: 15px;
+    height: 14px;
 	border-radius: 15px;
 	position: relative;
 	top: 0px;
-	right: 0px;
+	left: 0px;
 	background-color: #ff614a;
 	content: '';
 	display: inline-block;
 	visibility: visible;
 	border: 1px solid white;
+	line-height:  1.1em;
+	text-align: center;
 }
 
 
@@ -307,17 +319,16 @@ input[type='radio']:checked:after {
 	}
 	
 	.movie-ticket .ui-item .ui-review{
-		border:1px solid #ddd;
+		font-family: 'Abel', sans-serif;
+		border:1.4px solid #ff614a;
 		padding: 15px 20px 15px;
-		border-top:0px;
 		background:#fff;
-		border-bottom-left-radius:5px;
-		border-bottom-right-radius:5px;
+		border-radius: 5px;
 		width: 50%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		margin-top: 10px;
+		margin: 18px;
 	}
 	
 	.movie-ticket .ui-item .ui-review:not(:last-child)
@@ -326,13 +337,13 @@ input[type='radio']:checked:after {
 	}
 	
 	.movie-ticket .ui-item .ui-review h3{
-		font-size: 16px;
+		font-size: 19px;
 		line-height: 26px;
 		display: inline-block;
 	}
 	
 	.movie-ticket .ui-item .ui-review p{
-		font-size: 13px;
+		font-size: 16px;
 		line-height: 28px;
 		color: #777;
 		margin-bottom:10px;
@@ -430,27 +441,37 @@ input[type='radio']:checked:after {
 
 
 #introduction{
-margin-top: 35px;
 margin-bottom: 35px;
-margin-left: 10px;
-background-color: rgba(73, 69, 69, 0.452);
-border: 3.1px solid #FF614A;
-border-radius: 10px;
-
+width: 100%;
+height: 390px;
+background-size: cover;
+background-image: url(https://coverfiles.alphacoders.com/280/28047.jpg);
+border: .0000005px solid ;
+color: #ffffffe0;
+text-align: justify;
 
 }
 #introduction h4{
+	margin-top: 150px;
 	font-weight:900;
 	text-align: center;
 	font-size:25px;
 	font-family: 'Courier New', Courier, monospace;
 	text-transform: uppercase;
 	padding-bottom: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10px;
 	
-	}
-	#introduction p{
-		font-family: 'Orienta', sans-serif; font-size: 16px; line-height:24px;
-		text-align: center;
+	
+}
+#introduction p{
+	padding: 8px;
+	font-family: 'Abel', sans-serif;
+	font-size: 20px;
+	line-height:25px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.7);
+	word-spacing: 2.5px;
 	}
 #aboutus{
 	display: flex;
@@ -458,7 +479,7 @@ border-radius: 10px;
 	justify-content: space-evenly;
 	align-items: center;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 100px;
 	
 
 }

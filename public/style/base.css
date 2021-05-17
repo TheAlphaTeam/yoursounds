@@ -108,6 +108,8 @@ body{
       background: var(--button);
       font-family: 'Abel', sans-serif;
       color: #ff614a;
+      cursor: pointer;
+
     }
   
     .buttonnavBarstyle:hover {
@@ -258,26 +260,6 @@ body{
   }
   .album h2:hover {
     color:  #f37e6c;
-  }
-  
-  .api{
-    margin:50px;
-    width: 25%;
-    height: 330px;
-    padding: 10px;
-    display: inline-block;
-    text-align: center;
-    border: solid 1px  #FF614A;
-    border-radius: 10px;
-  }
-  .api h4 {
-    color: #FF614A;
-    font-family: 'Abel', sans-serif;
-    font-size:15px;
-    font-weight: bold;
-      display: inline-block;
-      overflow:  hidden;
-      text-align: center;  
   }
   .audio1{
     padding: 12px;

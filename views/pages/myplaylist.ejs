@@ -87,19 +87,19 @@
                         </div>
                         <%})%>
                     </div>
-                    <hr class="hr1 sectionhr">
-                    <hr class="hr sectionhr">
-                    <hr class="hr sectionhr">
-                    <hr class="hr2 sectionhr" id="hrmargin">
+
                 </section>
                 <% } %>
 
+                <hr class="hr1 sectionhr">
+                <hr class="hr sectionhr">
+                <hr class="hr sectionhr">
+                <hr class="hr2 sectionhr" id="hrmargin">
 
 
                 <div id="resultsEventsList">
                     <h2 class="listTitle">Your Events</h2><br>
                     <% if(events[0].event_time === null){ %>
-                    <h2 class="listTitle">Your Events</h2>
                     <h2 class="listStatus">There's no Events added </h2>
                     <% } else{ %>
                     <div class="eventData ">

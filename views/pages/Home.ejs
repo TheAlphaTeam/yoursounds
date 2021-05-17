@@ -26,7 +26,7 @@
             <div class="form-style-8">
 
               <section id="updateSingUp">
-                <label for="singUp" style="color: aliceblue; font-size: xx-large; display: inline-block; margin-top: 15px;font-family: monospace;">SingUp</label><button data-dismiss="modal" class="close">&times;</button>
+                <label for="signUp" style="color: aliceblue; font-size: xx-large; display: inline-block; margin-top: 15px;font-family: monospace;">SignUp</label><button data-dismiss="modal" class="close">&times;</button>
                 <form action="/singUp" method="POST" id="signup" class="signup">
                   <input class="inputHome" type="text" name="name" id="name" placeholder="User Name">
                   <input class="inputHome" type="email" name="email" id="email" placeholder="Email">
@@ -42,7 +42,7 @@
             <div class="form-style-8">
 
               <section id="updateLogin">
-                <label for="singUp" style="color: aliceblue; font-size: xx-large; display: inline-block; margin-top: 15px;font-family: monospace;">Login</label><button data-dismiss="modal" class="close">&times;</button>
+                <label for="login" style="color: aliceblue; font-size: xx-large; display: inline-block; margin-top: 15px;font-family: monospace;">Login</label><button data-dismiss="modal" class="close">&times;</button>
                 <form action="/login" method="POST" id="login" class="login">
                   <input class=" inputHome" type="email" name="emailL" id="emailL" placeholder="Email">
                   <input class="inputHome" type="password" name="passwordL" id="passwordL" placeholder="Password">
@@ -68,15 +68,15 @@
       </p>
 
     </div>
-
+    <div class="flexMain">
     <%data.map(element=>{%>
-    <div class="api">
-      <img src='<%=element.artist.picture_medium%>' alt="" srcset="" class=" imgData" style="border-radius: 50%;">
+    <div class="flexMainCard">
+      <img src='<%=element.artist.picture_medium%>' class="imgData" style="border-radius: 50%;">
       <h4><%=element.title%></h4>
       <audio class="audio1" controls><source src='<%=element.preview%>' type="audio/mpeg"></audio>
     </div>
     <% })%>
-
+</div>
     <hr class="hr2 margintop">
     <hr class="hr">
     <hr class="hr">
