@@ -14,32 +14,32 @@
             <hr class="hr">
             <hr class="hr1">
             <div class="personalIformation">
-                <img class="personalinfo" src='<%= input[0].profile_image %>' alt="Avatar" id="avatar"" > 
-                <h2 class=" glitch personalinfo" data-glitch="<%= input[0].fullname %>"><%= input[0].fullname %></h2>
-                <h5 id="usernameInfo" class="personalinfo">@<%= input[0].username %></h5>
-                <p id="bioinfo" class="personalinfo"><%= input[0].bio %></p>
+                <img class="personalinfo" src='<%= songs[0].profile_image %>' alt="Avatar" id="avatar"" > 
+                <h2 class=" glitch personalinfo" data-glitch="<%= songs[0].fullname %>"><%= songs[0].fullname %></h2>
+                <h5 id="usernameInfo" class="personalinfo">@<%= songs[0].username %></h5>
+                <p id="bioinfo" class="personalinfo"><%= songs[0].bio %></p>
 
                 <section id="formupdate">
                     <button id="updateBtn">Update your Data</button>
-                    <form id="updateForm" action="/updatePersonalInformation/<%=input[0].username%>?_method=put"
+                    <form id="updateForm" action="/updatePersonalInformation/<%=songs[0].username%>?_method=put"
                         method="post">
                         <input class="inputpresonal" type="hidden" name="username" id="username"
-                            value='<%= input[0].username %>'>
+                            value='<%= songs[0].username %>'>
                         <label for="profileimage">
                             <h6 class="personalLabel">profile Image</h6>
                         </label>
                         <input class="inputpresonal" type="text" name="image" id="image" placeholder="image_url"
-                            value="<%= input[0].profile_image %>">
+                            value="<%= songs[0].profile_image %>">
                         <label for="fullname">
                             <h6 class="personalLabel">Your Name</h6>
                         </label>
                         <input class="inputpresonal" type="text" name="fullname" id="fullname" placeholder="fullname"
-                            value="<%= input[0].fullname %>">
+                            value="<%= songs[0].fullname %>">
                         <label for="Bio">
                             <h6 class="personalLabel">Bio</h6>
                         </label>
                         <textarea class="inputpresonal" type="a" name="bio" id="bio" placeholder="Bio"
-                            value=""><%= input[0].bio %></textarea>
+                            value=""><%= songs[0].bio %></textarea>
                         <button class="button" type="submit">Update</button>
                 </section>
                 </form>
@@ -57,16 +57,16 @@
                 <hr class="hr">
                 <hr class="hr2">
                 <br>
-                <div>
+                <div id="resultsSongsList">
                     <h2 class="listTitle">Your Tracks</h2>
-                    <% if(input[0].songtitle==null){ %>
+                    <% if(songs[0].songtitle==null){ %>
                     <h2 class="listStatus">There's no Tracks added</h2>
                     <% } else{ %>
                     <section class="resultsSongsList">
-                        <% input.forEach(song=>{%>
+                        <% songs.forEach(song=>{%>
                         <div class="card">
-                            <form id="deleteSong" action="/addsong/<%=input[0].username%>" method="post">
-                                <input type="hidden" name="user" id="user" value="<%=input[0].username%>">
+                            <form id="deleteSong" action="/addsong/<%=songs[0].username%>" method="post">
+                                <input type="hidden" name="user" id="user" value="<%=songs[0].username%>">
                                 <input type="hidden" name="title" id="title" value="<%=song.songtitle%>">
                                 <input type="hidden" name="preview" id="preview" value="<%=song.cover_preview%>">
                                 <input type="hidden" name="image" id="image" value="<%=song.image_url%>">
@@ -92,11 +92,11 @@
                 <div id="resultsEventsList">
                     <h2 class="listTitle">Your Events</h2>
 
-                    <% if(input[0].event_time === null){ %>
+                    <% if(events[0].event_time === null){ %>
                     <h2 class="listStatus">There's no Events added </h2>
                     <% } else{ %>
                     <div class="eventData ">
-                        <%  input.forEach(event=>{ %>
+                        <%  events.forEach(event=>{ %>
                         <div class="card">
                             <form id="deleteEvent" action="/addevent/<%=event.username_event%>" method="post">
                                 <input type="hidden" name="user" id="user" value="<%= event.username_event%>">

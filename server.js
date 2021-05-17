@@ -43,15 +43,41 @@ server.post('/addevent/:username', addeventHandler);
 
 
 function profileHandler(req, res) {
+  // let currentUsername = req.params.username;
+  // let SQL = `SELECT * FROM persons  LEFT JOIN userevents
+  // ON persons.username = userevents.username_event
+  // LEFT JOIN usersongs
+  // ON persons.username = usersongs.username_songs where persons.username=$1;`;
+  // let saveValue = [currentUsername];
+  // client.query(SQL, saveValue)
+  //   .then((userData) => {
+  //    // res.render('pages/myplaylist', { input: userData.rows, user:userData.rows[0].username});
+  //     res.send(userData.rows);
+  //   }).catch(() => {
+  //     res.redirect('pages/Erorr');
+
+  //   });
+
   let currentUsername = req.params.username;
   let SQL = `SELECT * FROM persons  LEFT JOIN userevents
-  ON persons.username = userevents.username_event
-  LEFT JOIN usersongs
+  ON persons.username = userevents.username_event where persons.username=$1;`;
+  let SQL2 = `SELECT * FROM persons   LEFT JOIN usersongs
   ON persons.username = usersongs.username_songs where persons.username=$1;`;
+
   let saveValue = [currentUsername];
   client.query(SQL, saveValue)
     .then((userData) => {
-      res.render('pages/myplaylist', { input: userData.rows, user:userData.rows[0].username});
+    
+     client.query(SQL2, saveValue)
+       .then((userData2) => {       
+         res.render('pages/myplaylist', { events:userData.rows,songs:userData2.rows, user:userData.rows[0].username});
+       }).catch(() => {
+         res.redirect('pages/Erorr');
+   
+       });
+
+
+      
     }).catch(() => {
       res.redirect('pages/Erorr');
 
