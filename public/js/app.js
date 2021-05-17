@@ -211,18 +211,18 @@ $('#eventBtn').click(function () {
 });
 
 
-$('#list').click(function () {
-  $('#list').css('background', '#FF614A');
-  $('#eventslist').css('background', 'var(--button)');
-  $('#songslist').css('background', 'var(--button)');
-});
-$('#eventslist').click(function () {
-  $('#eventslist').css('background', '#FF614A');
-  $('#list').css('background', 'var(--button)');
-  $('#songslist').css('background', 'var(--button)');
-});
-$('#songslist').click(function () {
-  $('#songslist').css('background', '#FF614A');
-  $('#eventslist').css('background', 'var(--button)');
-  $('#list').css('background', 'var(--button)');
-});
+// $('#list').click(function () {
+//   $('#list').css('background', '#FF614A');
+//   $('#eventslist').css('background', 'var(--button)');
+//   $('#songslist').css('background', 'var(--button)');
+// });
+// $('#eventslist').click(function () {
+//   $('#eventslist').css('background', '#FF614A');
+//   $('#list').css('background', 'var(--button)');
+//   $('#songslist').css('background', 'var(--button)');
+// });
+// $('#songslist').click(function () {
+//   $('#songslist').css('background', '#FF614A');
+//   $('#eventslist').css('background', 'var(--button)');
+//   $('#list').css('background', 'var(--button)');
+// });

@@ -22,15 +22,16 @@
         <div id="searchFormss">
           <form action="/search/<%=user%>" method="POST" class="searchForm" id="songForm">
 
-            <input type="text" name="songs" required placeholder="type to search ...." class="one" />
+    
+            <input type="text" name="songs"required   placeholder="&#xF002;  Type To Search ...." style="font-family:Arial, FontAwesome" class="one"/>
 
             <div class="two">
-              <label for="" class="label1">Artist Name</label>
               <input type="radio" name="name" value="artist" class="radio-btn" checked />
+              <label for="" class="label1"> Artist Name</label>
             </div>
             <div class="two">
-              <label for="" class="label1">Song Name</label>
               <input type="radio" name="name" value="song" class="radio-btn" />
+              <label for="" class="label1">  Song Name</label>
             </div>
             <button class="btn-song">Search for songs </button>
           </form>
