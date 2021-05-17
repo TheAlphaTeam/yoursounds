@@ -1,0 +1,59 @@
+<footer class="footer">
+  <div class="l-footer">
+    <h1 class="img-footer">
+      <img class="logo2" src="/images/logoWhite.png" alt="">
+    </h1>
+    <p>
+      YourSound lets you discover and enjoy the greatest selection of
+      music from the most diverse creator community on earth. including
+      the ability to search on music and connect directly with artists,
+      as well as unearth breakthrough tracks
+  </div>
+  <ul class="r-footer">
+    <li>
+      <h2>Social</h2>
+      <ul class="box22">
+          <li><a href="#"><i class="fa fa-facebook" style="color: rgb(255, 254, 254);font-size: 35px;"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter" style="color: rgb(255, 254, 254);font-size: 35px;"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram" style="color: rgb(255, 254, 254);font-size: 35px;"></i></a></li>
+          <li><a href="#"><i class="fa fa-whatsapp" style="color: rgb(255, 254, 254);font-size: 35px;"></i></a></li>
+      </ul>
+    </li>
+    <li class="features">
+      <h2> Information</h2>
+      <ul class="box h-box">
+
+        <li>
+          <form action="/myprofile/<%=user%>" method="GET">
+            <button type="submit" class="buttonnavBarstyle">MyProfile</button>
+          </form>
+        </li>
+        <li>
+          <form action="/search/<%=user%>" method="GET">
+            <button type="submit" class="buttonnavBarstyle">Search</button>
+          </form>
+        </li>
+
+        <li><form action="/aboutus/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">Our Team</button>
+        </form></li>
+        <li><form action="/login" method="POST" class="logout">
+          <button type="submit" class="buttonnavBarstyle">LogOut</button>
+        </form></li>
+
+      </ul>
+    </li>
+    <li>
+      <h2>
+        Contract</h2>
+      <ul class="box">
+        <li><a href="#">Email ✉:yoursounds@gmail.com </a></li>
+        <li><a href="#">☎ 0796187256 </a></li>
+        <li><a href="#">🏢Amman-Jordan </a></li>
+      </ul>
+    </li>
+  </ul>
+  <div class="b-footer">
+    <p id="copyright"> yoursounds &copy; 2021 All rights reserved</p>
+  </div>
+</footer>

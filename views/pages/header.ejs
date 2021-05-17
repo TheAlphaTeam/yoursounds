@@ -1,0 +1,24 @@
+<header>
+
+  <img class="logo1" src="/images/logoWhite.png" alt="">
+  <div id="ulnavbar">
+
+
+      <form action="/myprofile/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">MyProfile</button>
+      </form>
+      <form action="/search/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">Search</button>
+      </form>
+
+      <form action="/aboutus/<%=user%>" method="GET">
+          <button type="submit" class="buttonnavBarstyle">About Us</button>
+      </form>
+      <form action="/login" method="POST" class="logout">
+          <button type="submit" class="buttonnavBarstyle">LogOut</button>
+      </form>
+
+  </div>
+
+
+</header>
