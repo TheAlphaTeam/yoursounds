@@ -25,7 +25,7 @@ server.get('/', homePage);
 server.post('/singUp', singUp);
 server.post('/login', Login);
 server.get('/TEST', TEST);
-
+server.get('/uboutUs',aboutushandler);
 
 // ////////////////////////profile page - Basel Atalla///////////////////////////
 server.get('/myprofile/:username', profileHandler);
@@ -35,6 +35,9 @@ server.post('/addevent/:username', addeventHandler);
 
 
 
+function aboutushandler(req,res){
+  res.render('pages/aboutus');
+}
 
 function profileHandler(req, res) {
   let currentUsername = req.params.username;
