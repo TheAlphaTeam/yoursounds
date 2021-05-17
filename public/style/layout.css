@@ -94,7 +94,6 @@
 		width: 100%;
 		height: 100%;
 		border-radius: 50%;
-		/* background: #ff8f10; */
 		transition: .5s;
 		transform: scale(.9);
 		z-index: -1;
@@ -102,7 +101,6 @@
 	  
 	  #avatar:hover::before {
 		transform: scale(1.1);
-		box-shadow: 0 0 15px #fd7f18;
 	  }
 	  
 	  #avatar:hover {
@@ -310,7 +308,7 @@
 		color: #fd7f18;
 		margin-bottom: 30px;
 	  }
-	.resultsSongsList{
+	#resultsSongsList{
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: space-evenly;
@@ -417,20 +415,46 @@
     width: 90%;
     justify-content: space-around;
     }
-    
-    
-    .card{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-    text-align: center;
-    margin: 20px;
-    width: 310PX;
-    height: 460PX;
-    border: solid 1px  #FF614A;
-    border-radius: 10px; 
-    }
+
+	.card{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		margin: 20px;
+		width: 340PX;
+		height: 500PX;
+		background-color:rgp(255,255,255,0.1);
+		border: solid 1px  #FF614A;
+		border-radius: 10px; 
+		transition: .5s;
+		box-shadow: 0 0 15px #fd7f18;
+		}
+		
+		.card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		transition: .5s;
+		transform: scale(.9);
+		z-index: -1;
+		
+		}
+		  
+		.card:hover::before {
+		transform: scale(1.1);
+		
+		}
+		  
+		.card:hover {
+		color: #fd7f18;
+		box-shadow: 0 0 40px #f35d5d;
+		}
     
     .imgSong{
     width: 250px;
@@ -715,7 +739,6 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
-	/* background: #ff8f10; */
 	transition: .5s;
 	transform: scale(.9);
 	z-index: -1;
@@ -723,7 +746,6 @@
   
   #avatar:hover::before {
 	transform: scale(1.1);
-	box-shadow: 0 0 15px #fd7f18;
   }
   
   #avatar:hover {
@@ -788,6 +810,7 @@
 	color: white;
 	font-size: larger;
   }
+
   #fullnameInfo{
   font-size: 50px;
   
@@ -917,8 +940,8 @@
   
   .eventData{
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
   }
   .listTitle{
 	text-align: center;
@@ -934,7 +957,7 @@
 	margin-bottom: 30px;
   }
   
-  .resultsSongsList{
+  #resultsSongsList{
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-evenly;
@@ -1067,7 +1090,6 @@ left: 0;
 width: 100%;
 height: 100%;
 border-radius: 50%;
-/* background: #ff8f10; */
 transition: .5s;
 transform: scale(.9);
 z-index: -1;
@@ -1076,7 +1098,7 @@ z-index: -1;
   
 .card:hover::before {
 transform: scale(1.1);
-box-shadow: 0 0 15px #fd7f18;
+
 }
   
 .card:hover {
@@ -1115,7 +1137,7 @@ padding: 2px;
 }
 
 .like{
-width: 60%;
+width: 194px;
 height: 42px;
 background-color:rgpa(255,255,255,0.1);
 border: solid rgb(255, 98, 74);;
@@ -1130,6 +1152,7 @@ color: white;
 transition: 0.5s;
 cursor: pointer;
 }
+
 .logo_babil{
 width: 55px;
 }

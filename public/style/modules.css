@@ -201,11 +201,13 @@ input[type='radio']:checked:after {
 	
 	
 	.bg-red {
-	  background-color: #f75353 !important;
+	  background-color: #ff614a !important;
 	}
 	.bg-green {
 	  background-color: #ff614a !important;
 	  width: 20%;
+	  height: 30px;
+	  border-radius: 5px;
 	}
 	
 	
