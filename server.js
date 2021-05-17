@@ -27,6 +27,9 @@ server.post('/login', Login);
 server.get('/TEST', TEST);
 server.get('/uboutUs',aboutushandler);
 
+
+
+
 // ////////////////////////profile page - Basel Atalla///////////////////////////
 server.get('/myprofile/:username', profileHandler);
 server.put('/updatePersonalInformation/:username', updatePersonalIfoHandler);
@@ -211,7 +214,7 @@ function showFormHandler(req, res) {
         let dataConstructors = artistData.map((item => {
           return new Artist(item);
         }));
-        res.render('pages/showartist', { songs: dataConstructors, user: username })
+        res.render('pages/showartist', { songs: dataConstructors, user: username , searchFor:term});
       }));//Artist page
   } else if (req.body.name === 'song') {
     fetch(`https://itunes.apple.com/search?attribute=songTerm&entity=song&term=${term}`)
@@ -221,7 +224,7 @@ function showFormHandler(req, res) {
         let dataConstructors = songData.map((item => {
           return new Songs(item);
         }));
-        res.render('pages/showsong', { songs: dataConstructors, user: username })
+        res.render('pages/showsong', { songs: dataConstructors, user: username,searchFor:term });
       }));//song page
   }
 }
@@ -286,6 +289,15 @@ function Songs(songData) {
   this.title = songData.trackName;
 }
 /////////////////////////////////////////////////end search page////////////////////////////////////////////////////
+
+server.get('/aboutushome', (req, res) => {
+  res.render('pages/aboutushome');
+});
+
+server.get('/aboutus/:username', (req, res) => {
+  let username = req.params.username;
+  res.render('pages/aboutus',{user: username});
+});
 
 server.get('*', (req, res) => {
   res.render('pages/Erorr');
