@@ -25,11 +25,12 @@ div{
 }
 
 h2{
+  margin-bottom:  30px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   margin-top: 150px;
-  font-size: 32px;
+  font-size: 50px;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
   display: block;
@@ -37,7 +38,27 @@ h2{
   font-weight: 300;
   font-family: Audiowide;
   text-shadow: 0px 0px 4px #12000a;
-  animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+  animation: fadeInText 1.5s ease-in 1.75s forwards, flicker4 2.5s linear 3.75s infinite, hueRotate 3s ease-in-out 1.5s infinite;
+}
+h3{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin-top: 150px;
+  font-size: 40px;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #12000a;
+  font-weight: 300;
+  text-align: center;
+  font-family: Audiowide;
+  text-shadow: 0px 0px 4px #12000a;
+  animation: fadeInText 1.5s ease-in 1.75s forwards, flicker4 2.5s linear 3.75s infinite, hueRotate 3s ease-in-out 1.5s infinite;
+}
+strong{
+  font-size: 50px;
+  text-decoration: #12000b;
 }
 
 #svgWrap_1,
@@ -46,7 +67,7 @@ h2{
   height: auto;
   width: 600px;
   max-width: 100%;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -54,7 +75,7 @@ h2{
 #svgWrap_1,
 #svgWrap_2,
 div{
-  animation: hueRotate 6s ease-in-out 3s infinite;
+  animation: hueRotate 3s ease-in-out 1.5s infinite;
 }
 
 #id1_1,
@@ -78,19 +99,19 @@ div{
 #id3_1{
   stroke-dasharray: 940px;
   stroke-dashoffset: -940px;
-  animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
+  animation: drawLine3 1.25s ease-in-out 0s forwards, flicker3 2s linear 2s infinite;
 }
 
 #id2_1{
   stroke-dasharray: 735px;
   stroke-dashoffset: -735px;
-  animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
+  animation: drawLine2 1.25s ease-in-out 0.25s forwards, flicker2 2s linear 2.25s infinite;
 }
 
 #id1_1{
   stroke-dasharray: 940px;
   stroke-dashoffset: -940px;
-  animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
+  animation: drawLine1 1.25s ease-in-out .5s forwards, flicker1 2s linear 2.5s infinite;
 }
 
 @keyframes drawLine1 {
