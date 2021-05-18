@@ -88,6 +88,36 @@
 		height: 40px;
 		width: 100%;
 	}
+	#introduction {
+		margin-bottom: 35px;
+		width: 100%;
+		height: 390px;
+		background-size: cover;
+		background-image: url(https://coverfiles.alphacoders.com/280/28047.jpg);
+		border: .0000005px solid;
+		color: #ffffffe0;
+		text-align: justify;
+	}
+	#introduction p {
+		padding: 8px;
+		font-family: 'Abel', sans-serif;
+		font-size: 15px;
+		line-height: 20px;
+		text-align: center;
+		/* background-color: rgba(0, 0, 0, 0.7); */
+		word-spacing: 2.5px;
+	}
+	#introduction h4 {
+		margin-top: 30px;
+		font-weight: 900;
+		text-align: center;
+		font-size: 22px;
+		font-family: 'Courier New', Courier, monospace;
+		text-transform: uppercase;
+		padding-bottom: 5px;
+		/* background-color: rgba(0, 0, 0, 0.7); */
+		padding: 8px;
+	}
 }
 
 
@@ -243,6 +273,40 @@
   .btn-event:hover{
 	  background: #ff614a;
   }
+  
+#introduction{
+	margin-bottom: 35px;
+	width: 100%;
+	height: 390px;
+	background-size: cover;
+	background-image: url(https://coverfiles.alphacoders.com/280/28047.jpg);
+	border: .0000005px solid ;
+	color: #ffffffe0;
+	text-align: justify;
+	
+	}
+	#introduction h4{
+		margin-top: 150px;
+		font-weight:900;
+		text-align: center;
+		font-size:25px;
+		font-family: 'Courier New', Courier, monospace;
+		text-transform: uppercase;
+		padding-bottom: 10px;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px;
+		
+		
+	}
+	#introduction p{
+		padding: 8px;
+		font-family: 'Abel', sans-serif;
+		font-size: 20px;
+		line-height:25px;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.7);
+		word-spacing: 2.5px;
+		}
 
 }
 .label1{
@@ -528,43 +592,12 @@ input[type='radio']:checked:after {
 	{
 		width: 91% !important;
 	}
-}
 
-
-
-#introduction{
-margin-bottom: 35px;
-width: 100%;
-height: 390px;
-background-size: cover;
-background-image: url(https://coverfiles.alphacoders.com/280/28047.jpg);
-border: .0000005px solid ;
-color: #ffffffe0;
-text-align: justify;
-
-}
-#introduction h4{
-	margin-top: 150px;
-	font-weight:900;
-	text-align: center;
-	font-size:25px;
-	font-family: 'Courier New', Courier, monospace;
-	text-transform: uppercase;
-	padding-bottom: 10px;
-	background-color: rgba(0, 0, 0, 0.7);
-	padding: 10px;
-	
 	
 }
-#introduction p{
-	padding: 8px;
-	font-family: 'Abel', sans-serif;
-	font-size: 20px;
-	line-height:25px;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0.7);
-	word-spacing: 2.5px;
-	}
+
+
+
 #aboutus{
 	display: flex;
 	flex-flow: row wrap;
