@@ -72,7 +72,7 @@
 		padding: 10px;
 		display: flexbox;
 		text-align: center;
-		background-image: url(https://github.com/TheAlphaTeam/yoursounds/blob/main/public/images/dancemotion.gif);
+		background-image: url(/images/dancemotion.gif);
 	  }
 	  
 	  #avatar{

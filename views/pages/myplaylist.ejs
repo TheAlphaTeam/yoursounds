@@ -8,11 +8,12 @@
     <%- include('header')%>
 
     <main>
-        <div id="myPlayListMain">
-            <hr class="hr2">
+        <hr class="hr2">
             <hr class="hr">
             <hr class="hr">
             <hr class="hr1">
+        <div id="myPlayListMain">
+
             <div class="personalIformation">
                 <img class="personalinfo" src='<%= songs[0].profile_image %>' alt="Avatar" id="avatar"" > 
                 <h2 class=" glitch personalinfo" data-glitch="<%= songs[0].fullname %>"><%= songs[0].fullname %></h2>
@@ -132,12 +133,12 @@
                     </div>
 
                     <% } %>
-                    
-                </div>
-                <hr class="hr1 sectionhr">
+                    <hr class="hr1 sectionhr">
                     <hr class="hr sectionhr">
                     <hr class="hr sectionhr">
                     <hr class="hr2 sectionhr" id="hrmargin">
+                </div>
+                
             </div>
         </div>
         <hr class="hr1">
