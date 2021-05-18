@@ -61,8 +61,49 @@ body{
     font-weight: 900;
     color: rgb(19, 18, 18);
   }
-@media only screen and (min-width:350px) and (max-width: 768px) {
+@media only screen and (min-width:340px) and (max-width: 768px) {
+  header {
+    background-color: rgb(10, 3, 3);
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+  .logo1 {
+    margin-left: 2%;
+    width:240px;
+    height: 70px;
+    
+  }
+  
+  #ulnavbar{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  header div  form {
+    display:inline-block;
+    margin-left: 10px;
+  }
+  .buttonnavBarstyle{
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    background: var(--button);
+    font-family: 'Abel', sans-serif;
+    color: #ff614a;
+    cursor: pointer;
 
+  }
+
+  .buttonnavBarstyle:hover {
+    color: white;
+  }
 
 }
 

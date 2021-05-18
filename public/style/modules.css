@@ -1,3 +1,95 @@
+@media only screen and (min-width:350px) and (max-width: 768px) {
+	.searchForm {
+		margin-bottom: 50px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		opacity: 0.5px;
+		width: 100%;
+		height: 400px;
+	}
+
+	.one {
+		color: white;
+		font-weight: 500;
+		font-size: 15px;
+		background: var(--button);
+		border: solid 1px white;
+		border-radius: 20px;
+		height: 40px;
+		width: 40%;
+		font-family: 'Gloria Hallelujah', cursive;
+		text-align: left;
+		padding: 18px;
+		margin-top: 0px;
+	}
+	.btn-song {
+		color: white;
+		font-weight: 500;
+		font-size: 15px;
+		background: var(--button);
+		border: solid 1px white;
+		border-radius: 5px;
+		height: 40px;
+		width: 15%;
+		cursor: pointer;
+	}
+	#TrackBtn {
+		text-transform: uppercase;
+		letter-spacing: 1.9px;
+		background: black;
+        border: solid 1px black;
+
+	}
+	#eventBtn {
+		text-transform: uppercase;
+		letter-spacing: 1.9px;
+		background: #ff614a;
+		border: solid 1px #ff614a;
+	}
+	#eventBtn, #TrackBtn {
+		padding: 5px;
+		color: white;
+		font-weight: 500;
+		font-size: 25px;
+		border-radius: 5px;
+		width: 250px;
+		margin-right: 1em;
+		font-family: 'Gloria Hallelujah', cursive;
+		cursor: pointer;
+	}
+	#buttonsForSearchPage {
+		padding-top: 80px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	.btn-event {
+		color: white;
+		font-weight: 500;
+		font-size: 15px;
+		background: var(--button);
+		border: solid 1px white;
+		height: 40px;
+		width: 150px;
+		text-align: center;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	.event-form input {
+		color: rgb(255, 255, 255);
+		font-weight: 500;
+		font-size: 15px;
+		background: var(--button);
+		border: solid 1px rgb(250, 249, 249);
+		border-radius: 20px;
+		height: 40px;
+		width: 100%;
+	}
+}
+
 
 @media only screen and (min-width: 768px) {
 	#searchFormss{

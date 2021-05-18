@@ -72,7 +72,9 @@
 		padding: 10px;
 		display: flexbox;
 		text-align: center;
-		background-image: url(/images/dancemo.gif);
+		background-image: url(https://media.giphy.com/media/VDP3an6BXVhbvddFkB/giphy.gif);
+		background-size: cover;
+
 	  }
 	  
 	  #avatar{
@@ -551,6 +553,12 @@
 		height: 70px;
 		  
 	}
+	.logo2 {
+		margin-left: 2%;
+		width:290px;
+		height: 90px;
+			  
+		}
     .footer ul {
     list-style: none;
     padding-left: 0;
@@ -755,7 +763,8 @@
 	padding: 10px;
 	display: flexbox;
 	text-align: center;
-	background-image: url(/images/remove.png);
+	background-image: url(https://media.giphy.com/media/VDP3an6BXVhbvddFkB/giphy.gif);
+	background-size: cover;
   }
   
   #avatar{
